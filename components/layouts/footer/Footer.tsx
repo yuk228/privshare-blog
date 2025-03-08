@@ -34,7 +34,7 @@ const Footer = () => {
                     </ul>
                 </div>
             </div>
-            <div className="flex pt-4 mt-4 gap-4 border-t border-gray-800 text-muted-foreground">
+            <div className="md:flex pt-4 mt-4 gap-4 border-t border-gray-800 text-muted-foreground">
                 <p>Copyright © 2025 PrivShare</p>
                 <p>The source code is available on <span><Link href="https://github.com/yuk228/privshare-blog" className="hover:text-foreground transition-colors">Github</Link></span></p>
             </div>

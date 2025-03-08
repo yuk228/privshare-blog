@@ -1,5 +1,5 @@
 import { HeroGeometric } from "@/components/ui/shape-landing-hero";
-import Blogs from "@/components/Blogs";
+import Blogs from "@/components/MainBlogs";
 import Accordions from "@/components/Accordion";
 
 export default function Home() {
