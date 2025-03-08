@@ -3,8 +3,9 @@
 import { motion } from "framer-motion";
 import { blogs } from "@/lib/blogs/blogs";
 import Link from "next/link";
+import React from 'react'
 
-export function Blogs() {
+const Blogs = () => {
     return (
         <section id="blogs" className="py-10 bg-black">
             <div className="container mx-auto px-4 md:px-6 max-w-7xl">
@@ -19,7 +20,7 @@ export function Blogs() {
                         </h2>
                     </div>
                 </motion.div>
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {blogs.map((blog, index) => (
                         <motion.div
                             key={index}
@@ -44,3 +45,5 @@ export function Blogs() {
         </section>
     );
 }
+
+export default Blogs

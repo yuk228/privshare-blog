@@ -1,5 +1,5 @@
 import React from 'react'
-import BlogList from '@/components/blogs/BlogList'
+import BlogList from '@/components/blog/BlogList'
 
 export default async function Home() {
     return (
