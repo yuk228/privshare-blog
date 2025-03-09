@@ -1,6 +1,7 @@
 import fs from "fs"
 import ReactMarkdown from 'react-markdown';
 import { getPostData } from "@/lib/blogs/getPostData";
+import Image from "next/image";
 
 export default async function Home({ params }: { params: Promise<{slug: string}>}) {
   const { slug } = await params;
@@ -8,6 +9,7 @@ export default async function Home({ params }: { params: Promise<{slug: string}>
     return (
         <main>
             <div className="px-[50px] py-[100px] md:px-[200px] lg:px-[500px]">
+              <Image alt={post.frontMatter.title} src={post.frontMatter.img || ""} width={400} height={200} className="mx-auto"/>
               <h1 className="text-4xl font-bold py-5 text-left md:text-center lg:text-center">{post.frontMatter.title}</h1>
               <ReactMarkdown
               components={{
