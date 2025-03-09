@@ -42,10 +42,10 @@ export default async function Header () {
                       <Link href="/blogs/desktop">Desktop</Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                      <Link href="/blogs/desktop">Anonimity</Link>
+                      <Link href="/blogs/anonimity">Anonimity</Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                      <Link href="/blogs/desktop">Others</Link>
+                      <Link href="/blogs/other">Others</Link>
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
                   <DropdownMenuSeparator />
