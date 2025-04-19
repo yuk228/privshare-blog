@@ -9,7 +9,7 @@ export default async function Home({ params }: { params: Promise<{slug: string}>
   const post = await getPostData(slug, "other");
     return (
         <main>
-            <div className="px-[50px] py-[100px] md:px-[200px] lg:px-[500px]">
+            <div className="min-h-screen container px-[50px] py-[100px] md:px-[200px] lg:px-[500px]">
               <Image alt={post.frontMatter.title} src={post.frontMatter.img || ""} width={400} height={200} className="mx-auto"/>
               <h1 className="text-4xl font-bold py-5 text-left md:text-center lg:text-center">{post.frontMatter.title}</h1>
               <ReactMarkdown
