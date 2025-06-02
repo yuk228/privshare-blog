@@ -1,6 +1,7 @@
 ---
 title: "SimpleX"
 description: "新時代のプライバシーメッセンジャー"
+tags: ["mobile", "simplex"]
 img: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%2Fid%2FOIP.4_4j2iihVsjRtS64T-7-TwHaFB%3Fpid%3DApi&f=1&ipt=f0d98467b8610824b9b15403777a26899a5a6306bd2bd36514ec879b8714e63c&ipo=images"
 ---
 

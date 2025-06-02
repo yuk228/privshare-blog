@@ -1,6 +1,7 @@
 ---
 title: "フィンガープリント"
 description: "IPアドレス以外での特定方法"
+tags: ["anonimity", "fingerprint"]
 img: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.TwZE3EiBK-TeWSCyYgWC9gHaDt%26pid%3DApi&f=1&ipt=47e887e6d980de8aac52d997df5f2de6427c50a32b66e3fd5da1710803d93526&ipo=images"
 ---
 

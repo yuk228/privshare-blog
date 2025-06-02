@@ -1,6 +1,7 @@
 ---
 title: "BitLocker"
 description: "Windows Pro標準搭載 ハードウェアレベルのデータ保護"
+tags: ["bitlocker", "encrypt", "desktop"]
 img: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.5Nkh1FV3ON1QAiyp8gSBdgHaEK%26pid%3DApi&f=1&ipt=b0d2c830da9da8c8c20be5cb1aae3493f48f943cc5d025dcbc60f65f0b59eccf&ipo=images"
 ---
 

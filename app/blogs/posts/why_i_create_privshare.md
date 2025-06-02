@@ -1,6 +1,7 @@
 ---
 title: "著者の思想"
 description: ""
+tags: ["other"]
 img: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.TD8tB1pD9pW9G1-ufbnXfAHaD4%26pid%3DApi&f=1&ipt=8d8394dae7414c282e46d21c09fce0e0f365d183f3ffbda5875e634312ba0741&ipo=images"
 ---
 
