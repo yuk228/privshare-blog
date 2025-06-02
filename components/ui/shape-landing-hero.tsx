@@ -176,7 +176,7 @@ function HeroGeometric({
                             プライバシー保護に関する知識はインターネットが普及した今、全員が持つべきです。 <br />PrivShareの記事を見て、自分で自分の身を守りましょう！
                         </p>
                         <div className="flex gap-5 justify-center">
-                            <Button><Link href="/blogs/mobile">Get Started Now</Link></Button>
+                            <Button><Link href="/blogs/">Get Started Now</Link></Button>
                             <Button variant="ghost" ><Link href="/about">About</Link></Button>
                         </div>
                     </motion.div>
