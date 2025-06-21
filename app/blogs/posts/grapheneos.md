@@ -4,6 +4,7 @@ description: "匿名性やセキュリティに特化したPixel向けOS"
 tags: ["mobile", "grapheneos"]
 img: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.FjoTWtvuPbh7cYSvkUSndwAAAA%26pid%3DApi&f=1&ipt=071191daee99b249bb5437fac5b97bf3271678fd29acf93dd89d4766c4d12231&ipo=images"
 ---
+
 注意: 著者はPixel端末を所持していません。設定内容や進め方が実際には異なる可能性があります。詳しくは公式ドキュメントを見てください。
 2024年7月時点でのLeakを元に作成しています。
 

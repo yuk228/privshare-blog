@@ -3,9 +3,9 @@ export interface FrontMatter {
   description?: string;
   img?: string;
   tags?: string[];
-};
+}
 
 export interface PostData {
   frontMatter: FrontMatter;
   content: string;
-};
+}

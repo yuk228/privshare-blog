@@ -4,8 +4,11 @@ description: "プライバシー保護、匿名性を意識した設定を紹介
 tags: ["mobile", "safari"]
 img: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.l6lQwXra9_vxaa_vv9uNSwHaDt%26pid%3DApi&f=1&ipt=c70e6a0098c633b9d0a0d01287b2cc9e80af6e4d7c46f222d8c88459ea0cdf56&ipo=images"
 ---
+
 注意: ios18以前のバージョンでは操作方法が違う場合があります。
+
 ## Safari
+
 まずブラウザーはiPhoneとネイティブに動作するSafariを使用してください。
 
 設定→アプリ→Safariに移動してください。
@@ -21,6 +24,7 @@ img: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.n
 Safariに設定して下さい。
 
 ## 検索
+
 検索エンジン: DuckDuckGo
 
 プライベートブラウズでも使用: ON

@@ -26,7 +26,6 @@ iPhoneでは[デフォルトで暗号化が施されいるため](https://suppor
 
 また、この記事は完全ではありません。まだ情報を調べ切れていません。気になる方は参考文献のリンク覗いてください。
 
-
 ## 強力なパスワードの使用
 
 第三者があなたのiPhoneにアクセスするにはデバイスのパスコードを
@@ -69,21 +68,23 @@ BFU状態では端末は完全に暗号化されあます。
 端末は電源を切ることで最も強い暗号化レベルになります。
 
 ## Cellebrite Premium ES
+
 !["Leaks"](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fforum-uploads.privacyguidesusercontent.com%2Foptimized%2F2X%2Fa%2Fa0d7405ade7877e6a51ffec1ec8239332f61cacc_2_1024x576.png&f=1&nofb=1&ipt=d53e5b584afa7da14bd5235b9362692641a0a04f2db690dd779fce5ab71432b1&ipo=images)
 
 CellebriteにはUFEDというエディション(地方都道府県警使用)もありますが、警視庁が使用しているPremium ESの方が性能が高いためそれを基準として話します。
 
-2024年4月時点で、iPhone XRから最新モデルのiPhoneは、iOS 17.4 以降を実行している場合、まだロックを解除できません。 
+2024年4月時点で、iPhone XRから最新モデルのiPhoneは、iOS 17.4 以降を実行している場合、まだロックを解除できません。
 2024年7月時点で、iOS 17.5.1までのバージョンを実行している端末はロック解除もしくはデータ抽出される可能性があります。
 
 著者も詳しく調べ切れていません。随時追加予定です。
 
 ## GrayKey
+
 !["Leaks"](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.W9PnuXYBBdOb_EGpa9rYVAHaEt%26pid%3DApi&f=1&ipt=3ea9075842167d7b1bf24a1135d57e76691b98fd3e9fb87af95b624e6813681d&ipo=images)
 
 - ios 18 及びios 18.0.1を実行しているiPhoneから「部分的な」データ検索のみを実行可能
 
-Forbesは 、「部分抽出」は、暗号化されていないファイルとファイルサイズやフォルダー構造を含むいくつかのメタデータのみを引き出すことのみであると指摘しています。 
+Forbesは 、「部分抽出」は、暗号化されていないファイルとファイルサイズやフォルダー構造を含むいくつかのメタデータのみを引き出すことのみであると指摘しています。
 
 - ios 18.0 beta以降のバージョンはアクセス不可
 

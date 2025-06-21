@@ -6,6 +6,7 @@ img: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.n
 ---
 
 ## Tor(The Onion Router)とは
+
 (著者のTorに対しての理解が浅いため、より多くの情報を求めるにはTor projectのドキュメントを見ることをおすすめします。)
 !["Tor"](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.gMxVBLNtsOm1r_jA-3yMuAHaFW%26pid%3DApi&f=1&ipt=85fdfb83c07f3936536bb8282e7ef2f2d517b35bba7aa033b51268454d32fb7e&ipo=images)
 
@@ -32,6 +33,7 @@ Torはその秘匿性の高さから、多くの犯罪者に悪用されてい�
 ## Tor Browser
 
 ## Tor over VPN
+
 Tor over vpnは、`Client -> VPN -> Tor -> Server`の順番でサーバーに接続します。
 
 ISPにTorを利用していることを隠したり、Torが突破されたさいに最後の砦として利用出来ます。
@@ -39,6 +41,7 @@ ISPにTorを利用していることを隠したり、Torが突破されたさ�
 私はTor over VPNをおすすめします。
 
 ## VPN over Tor
+
 VPN over Torは、`Client -> Tor -> VPN -> Server`の順番でサーバーに接続します。
 
 接続先のサーバーがTor接続を拒否している場合に多く利用されます。
