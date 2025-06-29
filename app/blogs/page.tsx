@@ -1,8 +1,8 @@
-import BlogList from "@/components/blog/BlogList";
+import BlogList from "@/components/blog/blog-list";
 
 export default async function Home() {
   return (
-    <div className="min-h-screen px-[50px] py-[100px] md:px-[100px] lg:px-[250px]">
+    <div className="max-w-4xl mx-auto">
       <BlogList />
     </div>
   );

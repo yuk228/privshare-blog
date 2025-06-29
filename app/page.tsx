@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="max-w-4xl mx-auto ">
+    <div className="max-w-4xl mx-auto">
       <div className="flex flex-col items-center justify-center gap-6 mb-16">
         <h1 className="text-5xl md:text-6xl font-bold text-center bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
           PrivShare.net

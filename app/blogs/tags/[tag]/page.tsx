@@ -1,6 +1,6 @@
 import fs from "fs";
 import { getPostData } from "@/lib/blogs/getPostData";
-import BlogList from "@/components/blog/BlogList";
+import BlogList from "@/components/blog/blog-list";
 import { notFound } from "next/navigation";
 
 export default async function Home({
@@ -28,11 +28,9 @@ export default async function Home({
     }
 
     return (
-      <main>
-        <div className="min-h-screen px-[50px] py-[100px] md:px-[100px] lg:px-[250px]">
-          <BlogList tag={tag} />
-        </div>
-      </main>
+      <div className="max-w-4xl mx-auto">
+        <BlogList tag={tag} />
+      </div>
     );
   } catch {
     notFound();
