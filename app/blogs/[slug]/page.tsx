@@ -15,7 +15,7 @@ export default async function Home({
   try {
     const post = await getPostData(slug);
     return (
-      <article className="min-h-screen prose prose-lg dark:prose-invert max-w-none">
+      <article>
         <div className="max-w-4xl mx-auto">
           <Image
             alt={post.frontMatter.title}
@@ -51,7 +51,12 @@ export default async function Home({
                   {...props}
                 />
               ),
-              a: ({ ...props }) => <a className="text-sky-400 hover:text-sky-500 hover:underline" {...props} />,
+              a: ({ ...props }) => (
+                <a
+                  className="text-sky-400 hover:text-sky-500 hover:underline"
+                  {...props}
+                />
+              ),
               code: ({ ...props }) => (
                 <code className="bg-gray-400 dark:bg-gray-900" {...props} />
               ),
