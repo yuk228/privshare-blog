@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { getPosts } from "@/lib/blogs/getPost";
+import Tags from "@/components/blog/tags";
 
 const BlogList = async (props: { tag?: string }) => {
   const posts = await getPosts(props.tag || "");
@@ -10,7 +11,7 @@ const BlogList = async (props: { tag?: string }) => {
       {posts.map((post, index) => (
         <div
           key={index}
-          className="block p-2 rounded-lg bg-gray-900/50 overflow-hidden border-border/0 hover:border hover:border-gray-800 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
+          className="block p-2 rounded-lg dark:bg-gray-900/50 overflow-hidden border hover:border-gray-800 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
         >
           <Link href={`/blogs/${post.slug}`} className="block p-6">
             <Image
@@ -21,7 +22,7 @@ const BlogList = async (props: { tag?: string }) => {
               }
               width={400}
               height={200}
-              className="mx-auto pb-2 object-cover"
+              className="mx-auto pb-2 object-cover rounded-lg"
             />
             <h2 className="text-xl font-semibold text-gray-800 dark:text-white">
               {post.FrontMatter.title}
@@ -29,16 +30,7 @@ const BlogList = async (props: { tag?: string }) => {
             <p className="mt-2 text-gray-600 dark:text-gray-400">
               {post.FrontMatter.description || ""}
             </p>
-            <div className="grid grid-cols-1 lg:grid-cols-3 mt-2 gap-2">
-              {post.FrontMatter.tags?.map(tag => (
-                <div
-                  className="border hover:border-muted-foreground transition-all duration-300 rounded-md px-3 py-2 text-center"
-                  key={tag}
-                >
-                  {tag}
-                </div>
-              ))}
-            </div>
+            <Tags tags={post.FrontMatter.tags || []} />
           </Link>
         </div>
       ))}

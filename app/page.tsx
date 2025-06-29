@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="min-h-screen px-4 md:px-8 lg:px-16 xl:px-32">
-      <div className="max-w-4xl mx-auto pt-32 pb-16">
+    <main className="">
+      <div className="max-w-4xl mx-auto ">
         <div className="flex flex-col items-center justify-center gap-6 mb-16">
           <h1 className="text-5xl md:text-6xl font-bold text-center bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
             PrivShare.net
@@ -17,13 +17,8 @@ export default function Home() {
           </p>
           <div className="flex items-center justify-center gap-6 mb-8">
             <Button asChild>
-              <Link href="/docs">
+              <Link href="/blogs">
                 今すぐ始める
-              </Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link href="/mobile">
-                ブログ
               </Link>
             </Button>
           </div>
@@ -44,7 +39,7 @@ export default function Home() {
                 ITの知識の無い人々にとってこれを避けることは困難であり、もはや生活に必須な多くのインターネットサービスを自分のプライバシーを犠牲にしながら使用しています。
               </p>
               <p>
-                このサイトでは、あなたのプライバシー・匿名性を最大限に保つための情報を体系的に提供します。
+                このサイトでは、あなたのプライバシー・匿名性を最大限に保つための情報を提供します。
               </p>
             </div>
           </section>

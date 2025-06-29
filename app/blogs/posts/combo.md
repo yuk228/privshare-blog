@@ -9,7 +9,7 @@ img: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.n
 
 Combo Listとは侵害されたURL, ユーザー名, パスワードのコレクションのことを指します。
 
-- https://example.com/login:username:password
+- `https://example.com/login:username:password`
 
 の形式で記載されていることが多いです。
 
