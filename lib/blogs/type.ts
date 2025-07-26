@@ -1,6 +1,6 @@
 export interface FrontMatter {
   title: string;
-  description?: string;
+  description: string;
   img?: string;
   tags?: string[];
 }
