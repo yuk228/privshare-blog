@@ -5,6 +5,11 @@ export interface FrontMatter {
   tags?: string[];
 }
 
+export interface PostSummary {
+  FrontMatter: FrontMatter;
+  slug: string;
+}
+
 export interface PostData {
   frontMatter: FrontMatter;
   content: string;

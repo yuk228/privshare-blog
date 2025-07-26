@@ -1,54 +1,22 @@
-import fs from "fs";
-import { getPostData } from "@/lib/blogs/getPostData";
-import BlogList from "@/components/blog/blog-list";
+import { BlogList } from "@/components/blog/blog-list";
 import { notFound } from "next/navigation";
+import { getPostSummaries } from "@/lib/blogs/getPost";
 
-export default async function Home({
-  params,
-}: {
+type Props = {
   params: Promise<{ tag: string }>;
-}) {
+};
+
+export default async function Page({ params }: Props) {
   const { tag } = await params;
-  try {
-    const files = fs.readdirSync("./app/blogs/posts", "utf-8");
-    const slugs = files.map(file => file.replace(/\.md$/, ""));
-    const posts = await Promise.all(
-      slugs.map(async slug => {
-        const post = await getPostData(slug);
-        return post;
-      })
-    );
-
-    const filteredPosts = posts.filter(post =>
-      post.frontMatter.tags?.includes(tag)
-    );
-
-    if (filteredPosts.length === 0) {
-      notFound();
-    }
-
-    return (
-      <div className="max-w-4xl mx-auto">
-        <BlogList tag={tag} />
-      </div>
-    );
-  } catch {
+  const postSummaries = await getPostSummaries(tag);
+  if (!postSummaries.length) {
     notFound();
   }
+  return <BlogList posts={postSummaries} />;
 }
 
 export async function generateStaticParams() {
-  const files = fs.readdirSync("./app/blogs/posts", "utf-8");
-  const slugs = files.map(file => file.replace(/\.md$/, ""));
-  const posts = await Promise.all(
-    slugs.map(async slug => {
-      const post = await getPostData(slug);
-      return post.frontMatter.tags;
-    })
-  );
-
-  const tags = posts.flat().filter((tag): tag is string => tag !== undefined);
-  return tags.map(tag => ({
-    tag,
-  }));
+  const posts = await getPostSummaries();
+  const tags = posts.flatMap(post => post.FrontMatter.tags || []);
+  return tags.map(tag => ({ tag }));
 }
