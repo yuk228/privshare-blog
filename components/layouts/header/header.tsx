@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { ThemeToggle } from "@/components/layouts/header/theme-toggle";
 import SignIn from "@/components/layouts/header/signin";
+import { Button } from "@/components/ui/button";
 export default async function Header() {
   return (
     <header className="fixed top-0 w-full z-50 backdrop-blur-sm border-b border-foreground/10">
@@ -15,6 +16,9 @@ export default async function Header() {
         <div className="flex items-center gap-2">
           <SignIn />
           <ThemeToggle />
+          <Button asChild>
+            <Link href="/new">New Post</Link>
+          </Button>
         </div>
       </div>
     </header>

@@ -49,9 +49,7 @@ export default async function Me() {
             <TabsTrigger value="articles">Articles</TabsTrigger>
             <TabsTrigger value="comments">Comments</TabsTrigger>
           </TabsList>
-          <TabsContent value="articles">
-            articles here
-          </TabsContent>
+          <TabsContent value="articles">articles here</TabsContent>
           <TabsContent value="comments">comments here</TabsContent>
         </Tabs>
       </div>
