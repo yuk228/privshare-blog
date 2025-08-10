@@ -1,12 +1,15 @@
 import fs from "fs";
+import path from "path";
 import matter from "gray-matter";
 import { FrontMatter, PostSummary } from "@/lib/blogs/type";
 
 export async function getPostSummaries(tag?: string): Promise<PostSummary[]> {
-  const files = fs.readdirSync(`./app/blogs/posts`, "utf-8");
+  const postsDir = path.join(process.cwd(), "app/blogs/posts");
+  const files = fs.readdirSync(postsDir, "utf-8");
   const posts = files.map(post => {
     const slug = post.replace(/\.md$/, "");
-    const fileContent = fs.readFileSync(`./app/blogs/posts/${post}`, "utf-8");
+    const filePath = path.join(postsDir, post);
+    const fileContent = fs.readFileSync(filePath, "utf-8");
     const { data } = matter(fileContent);
     return {
       FrontMatter: data as FrontMatter,
