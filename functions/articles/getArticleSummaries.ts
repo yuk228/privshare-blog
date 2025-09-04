@@ -7,9 +7,10 @@ type Props = {
   tag?: string;
 };
 
-export async function getArticleSummaries({ tag }: Props = {}): Promise<
-  PostSummary[]
-> {
+export async function getArticleSummaries(
+  props: Props = {}
+): Promise<PostSummary[]> {
+  const { tag } = props;
   const postsDir = path.join(process.cwd(), "app/articles/posts");
   const files = fs.readdirSync(postsDir, "utf-8");
   const posts = files.map(post => {

@@ -1,6 +1,6 @@
 import fs from "fs";
 import Image from "next/image";
-import { getArticleData } from "@/lib/functions/getArticleData";
+import { getArticleData } from "@/functions/articles/getArticleData";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MarkdownRenderer } from "@/components/article/markdown-renderer";

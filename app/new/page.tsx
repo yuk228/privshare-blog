@@ -6,9 +6,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useEffect, useState } from "react";
 import { MarkdownRenderer } from "@/components/article/markdown-renderer";
-import { useLocalStorage } from "@/lib/hooks/local-storage-hooks";
+import { useLocalStorage } from "@/functions/hooks/local-storage-hooks";
 import { Button } from "@/components/ui/button";
-import { CreateArticleModal } from "@/components/article/new/create-article-modal";
+import { CreateArticleDialog } from "@/components/article/new/create-article-modal";
 
 export default function Page() {
   const [title, setTitle] = useLocalStorage("title");
@@ -29,7 +29,7 @@ export default function Page() {
               <TabsTrigger value="write">Write</TabsTrigger>
               <TabsTrigger value="preview">Preview</TabsTrigger>
             </TabsList>
-            <CreateArticleModal />
+            <CreateArticleDialog />
           </div>
           <TabsContent value="write">
             <Write content={content} setContent={setContent} />

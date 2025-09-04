@@ -1,6 +1,6 @@
 import { Articles } from "@/components/article/articles";
 import { notFound } from "next/navigation";
-import { getArticleSummaries } from "@/lib/functions/getArticleSummaries";
+import { getArticleSummaries } from "@/functions/articles/getArticleSummaries";
 
 type Props = {
   params: Promise<{ tag: string }>;
