@@ -16,7 +16,7 @@ export default function Home() {
         </p>
         <div className="flex items-center justify-center gap-6 mb-8">
           <Button asChild>
-            <Link href="/blogs">今すぐ始める</Link>
+            <Link href="/articles">今すぐ始める</Link>
           </Button>
         </div>
       </div>

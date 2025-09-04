@@ -5,10 +5,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useEffect, useState } from "react";
-import { MarkdownRenderer } from "@/components/blog/markdown-renderer";
+import { MarkdownRenderer } from "@/components/article/markdown-renderer";
 import { useLocalStorage } from "@/lib/hooks/local-storage-hooks";
 import { Button } from "@/components/ui/button";
-import { CreateArticleModal } from "@/components/blog/new/create-article-modal";
+import { CreateArticleModal } from "@/components/article/new/create-article-modal";
 
 export default function Page() {
   const [title, setTitle] = useLocalStorage("title");

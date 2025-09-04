@@ -1,15 +1,25 @@
 import Link from "next/link";
 import Image from "next/image";
-import { PostSummary } from "@/lib/blogs/type";
+import { PostSummary } from "@/entities/articles/type";
 
-type BlogListProps = {
+type Props = {
   posts: PostSummary[];
 };
+
+export async function Articles({ posts }: Props) {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-4 max-w-7xl mx-auto">
+      {posts.map((post, index) => (
+        <Card key={index} post={post} />
+      ))}
+    </div>
+  );
+}
 
 function Card({ post }: { post: PostSummary }) {
   return (
     <div className="group relative overflow-hidden rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
-      <Link href={`/blogs/${post.slug}`} className="block">
+      <Link href={`/articles/${post.slug}`} className="block">
         <div className="aspect-video overflow-hidden">
           <Image
             alt={post.FrontMatter.title}
@@ -31,16 +41,6 @@ function Card({ post }: { post: PostSummary }) {
           </p>
         </div>
       </Link>
-    </div>
-  );
-}
-
-export async function BlogList({ posts }: BlogListProps) {
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-4 max-w-7xl mx-auto">
-      {posts.map((post, index) => (
-        <Card key={index} post={post} />
-      ))}
     </div>
   );
 }

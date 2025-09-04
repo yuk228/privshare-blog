@@ -1,11 +1,11 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-interface MarkdownRendererProps {
+type Props = {
   content: string;
-}
+};
 
-export function MarkdownRenderer({ content }: MarkdownRendererProps) {
+export function MarkdownRenderer({ content }: Props) {
   return (
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
