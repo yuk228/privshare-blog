@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import { prisma } from "@/prisma";
+import { prisma } from "@/prisma/prisma";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";

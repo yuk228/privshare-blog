@@ -30,10 +30,14 @@ export default async function SignIn() {
           <DropdownMenuLabel>{session.user?.name}</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
-            <Link href="/users/me">Profile</Link>
+            <Link href="/users/me" className="w-full">
+              Profile
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <Link href="/settings">Settings</Link>
+            <Link href="/settings" className="w-full">
+              Settings
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <form

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { ThemeToggle } from "@/components/layouts/header/theme-toggle";
-import SignIn from "@/components/layouts/header/signin";
+import { ThemeToggle } from "@/components/layouts/theme-toggle";
+import SignIn from "@/components/layouts/signin";
 import { Button } from "@/components/ui/button";
 export default async function Header() {
   return (
