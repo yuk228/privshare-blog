@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+注意: このプロジェクトは現在開発中です。
 
-## Getting Started
+# Privshare
+Privshareは、プライベシーや匿名化に関するコアな情報を提供する、オープンソースのプログサービスです。
 
-First, run the development server:
+私たちの生活に欠かせないインターネット上で、個人データやオンラインでの行動情報を販売する企業や、検閲・監視を行う当局から逃れましょう。
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# 技術構成
+## Frontend
+### フレームワーク・ライブラリ
+- Next.js AppRouter
+- React
+- TypeScript
+- TailWindCSS
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### UIコンポーネント
+- shadcn/ui
+- Lucide React
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 記事レンダリング
+- React Markdown
+- Gray Matter
+- Remark GFM
 
-## Learn More
+## Backend
+### データベース
+- Prisma ORM
+- Supabase 
 
-To learn more about Next.js, take a look at the following resources:
+### 認証
+- auth.js
+- Github Oauth Provider
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Deploy
+- Vercel
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# 免責事項
+このプログラム(以下、「本サービス」とします。)は教育・研究目的で作成されました。本サービスの情報を悪用して犯罪行為を行ったり、捜査から逃れる行為は禁止されており、**開発者はその利用方法を想定していません**。
 
-## Deploy on Vercel
+また、本サービス及び本サービスが提供する情報を使用して生じた全ての問題について、**開発者は一切の責任を負いかねます**。**全て自己責任で利用して下さい**。
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+詳しくは利用規約・プライバシーポリシーをご覧ください。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
