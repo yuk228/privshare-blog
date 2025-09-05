@@ -4,10 +4,8 @@ import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { useEffect, useState } from "react";
 import { MarkdownRenderer } from "@/components/article/markdown-renderer";
 import { useLocalStorage } from "@/functions/hooks/local-storage-hooks";
-import { Button } from "@/components/ui/button";
 import { CreateArticleDialog } from "@/components/article/new/create-article-modal";
 
 export default function Page() {

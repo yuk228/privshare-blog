@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MarkdownRenderer } from "@/components/article/markdown-renderer";
 
-export default async function Home({
+export default async function Page({
   params,
 }: {
   params: Promise<{ slug: string }>;
