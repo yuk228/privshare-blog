@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label";
 import { useCreateArticle } from "@/functions/hooks/articles/create-articles-hooks";
 
 export function CreateArticleDialog() {
-  const { formik, setToken } = useCreateArticle();
+  const { formik } = useCreateArticle();
   return (
     <Dialog>
       <form onSubmit={formik.handleSubmit}>

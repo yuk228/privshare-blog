@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { MarkdownRenderer } from "@/components/article/markdown-renderer";
 import { useLocalStorage } from "@/functions/hooks/local-storage-hooks";
-import { CreateArticleDialog } from "@/components/article/new/create-article-modal";
+import { CreateArticleDialog } from "@/components/article/new/create-article-dialog";
 
 export default function Page() {
   const [title, setTitle] = useLocalStorage("title");
