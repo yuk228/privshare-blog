@@ -9,29 +9,21 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useCreateArticle } from "@/functions/hooks/articles/create-articles-hooks";
+import { Turnstile } from "next-turnstile";
 
 export function CreateArticleDialog() {
-  const { formik } = useCreateArticle();
+  const { formik, setToken } = useCreateArticle();
   return (
     <Dialog>
-      <form onSubmit={formik.handleSubmit}>
-        <DialogTrigger asChild>
-          <Button>作成</Button>
-        </DialogTrigger>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>作成</DialogTitle>
-          </DialogHeader>
+      <DialogTrigger asChild>
+        <Button>作成</Button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>作成</DialogTitle>
+        </DialogHeader>
+        <form onSubmit={formik.handleSubmit}>
           <div className="grid gap-4">
-            <div className="grid gap-3">
-              <Label htmlFor="title">タイトル</Label>
-              <Input
-                type="text"
-                name="title"
-                value={formik.values.title}
-                onChange={formik.handleChange}
-              />
-            </div>
             <div className="grid gap-3">
               <Label htmlFor="description">説明</Label>
               <Input
@@ -40,6 +32,9 @@ export function CreateArticleDialog() {
                 value={formik.values.description}
                 onChange={formik.handleChange}
               />
+              {formik.errors.description && (
+                <p className="text-red-500">{formik.errors.description}</p>
+              )}
             </div>
             <div className="grid gap-3">
               <Label htmlFor="slug">スラッグ</Label>
@@ -49,20 +44,35 @@ export function CreateArticleDialog() {
                 value={formik.values.slug}
                 onChange={formik.handleChange}
               />
+              {formik.errors.slug && (
+                <p className="text-red-500">{formik.errors.slug}</p>
+              )}
             </div>
             <div className="grid gap-3">
-              {/* <Turnstile
+              <Label htmlFor="thumbnailUrl">サムネイルURL</Label>
+              <Input
+                type="url"
+                name="thumbnailUrl"
+                value={formik.values.thumbnailUrl}
+                onChange={formik.handleChange}
+              />
+              {formik.errors.thumbnailUrl && (
+                <p className="text-red-500">{formik.errors.thumbnailUrl}</p>
+              )}
+            </div>
+            <div className="grid gap-3">
+              <Turnstile
                 siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY as string}
                 theme="auto"
                 onVerify={token => {
                   setToken(token);
                 }}
-              /> */}
+              />
             </div>
           </div>
           <Button type="submit">作成</Button>
-        </DialogContent>
-      </form>
+        </form>
+      </DialogContent>
     </Dialog>
   );
 }

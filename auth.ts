@@ -22,7 +22,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             data: {
               name: user.name || "",
               email: user.email || "",
-              imageUrl: user.image || "",
+              avatarUrl: user.image || "",
               role: "USER",
             },
           });

@@ -1,100 +1,92 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
   output   = "../app/generated/prisma"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  uuid      String    @unique @default(uuid())
+  name      String    @db.VarChar(255)
+  avatarUrl String?
+  email     String    @unique
+  role      Role      @default(USER)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  articles  Article[]
+  comments  Comment[]
+
+  @@map("users")
+}
+
+model Article {
+  id          Int          @id @default(autoincrement())
+  uuid        String       @unique @default(uuid())
+  title       String       @db.VarChar(255)
+  description String       @db.VarChar(255)
+  body        String
+  thumbnailUrl String      @db.VarChar(255)
+  slug        String       @unique @db.VarChar(255)
+  isPublished Boolean      @default(false)
+  authorId    Int
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  articleTags ArticleTag[]
+  author      User         @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  comments    Comment[]
+
+  @@index([isPublished])
+  @@index([authorId])
+  @@index([createdAt])
+  @@index([isPublished, createdAt])
+  @@map("articles")
+}
+
+model Tag {
+  id       Int          @id @default(autoincrement())
+  name     String       @db.VarChar(255)
+  articles ArticleTag[]
+
+  @@index([name])
+  @@map("tags")
+}
+
+model ArticleTag {
+  articleId Int
+  tagId     Int
+  article   Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  tag       Tag     @relation(fields: [tagId], references: [id])
+
+  @@id([articleId, tagId])
+  @@index([articleId])
+  @@index([tagId])
+  @@index([articleId, tagId])
+  @@map("article_tags")
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  content   String   @db.VarChar(255)
+  articleId Int
+  userId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  article   Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([articleId])
+  @@index([userId])
+  @@index([createdAt])
+  @@map("comments")
 }
 
 enum Role {
   OWNER
   ADMIN
   USER
-}
-
-
-
-model User {
-  id        Int      @id @default(autoincrement())
-  uuid      String   @unique @default(uuid())
-  name      String   @db.VarChar(255)
-  imageUrl  String?
-  email     String   @unique
-
-  role      Role     @default(USER)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("users")
-  posts Post[]
-  comments Comment[]
-}
-
-model Post {
-  id        Int      @id @default(autoincrement())
-  title     String   @db.VarChar(255)
-  description String   @db.VarChar(255)
-  content   String   @db.Text
-  slug      String   @unique @db.VarChar(255)
-  isPublished Boolean @default(false)
-  authorId  Int
-  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("posts")
-  @@index([isPublished])
-  @@index([authorId])
-  @@index([createdAt])
-  @@index([isPublished, createdAt])
-
-  PostTags    PostTag[]
-  comments Comment[]
-}
-
-model Tag {
-  id        Int      @id @default(autoincrement())
-  name      String   @db.VarChar(255)
-  posts     PostTag[]
-
-  @@map("tags")
-  @@index([name])
-}
-
-model PostTag {
-  postId    Int
-  tagId     Int
-  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
-  tag       Tag      @relation(fields: [tagId], references: [id], onDelete: Restrict)
-
-  @@id([postId, tagId])
-  @@map("post_tags")
-  @@index([postId])
-  @@index([tagId])
-  @@index([postId, tagId])
-}
-
-model Comment {
-  id        Int      @id @default(autoincrement())
-  content   String   @db.VarChar(255)
-  postId    Int
-  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
-  userId    Int
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("comments")
-  @@index([postId])
-  @@index([userId])
-  @@index([createdAt])
 }

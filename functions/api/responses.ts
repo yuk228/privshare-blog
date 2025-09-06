@@ -11,3 +11,11 @@ export function Unauthorized() {
 export function Forbidden() {
   return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 }
+
+export function Created(data: any) {
+  return NextResponse.json(data, { status: 201 });
+}
+
+export function UnprocessableEntity() {
+  return NextResponse.json({ error: "Unprocessable Entity" }, { status: 422 });
+}

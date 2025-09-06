@@ -1,50 +1,98 @@
 import { useFormik } from "formik";
 import { useState } from "react";
 import * as yup from "yup";
+import useSWRMutation from "swr/mutation";
+import { useLocalStorage } from "@/functions/hooks/local-storage-hooks";
+import { ArticleRequest, ArticleResponse } from "@/entities/articles";
+import { useRouter } from "next/navigation";
 
-type FormValues = {
-  title: string;
-  description: string;
-  content: string;
-  slug: string;
+type FormValues = ArticleRequest & {
+  token: string;
 };
 
 type UseCreateArticle = {
+  data: ArticleResponse | undefined;
   formik: ReturnType<typeof useFormik<FormValues>>;
+  isMutating: boolean;
   setToken: (token: string) => void;
 };
 
 export function useCreateArticle(): UseCreateArticle {
   const [token, setToken] = useState("");
+  const [title, ,clearTitle] = useLocalStorage("title");
+  const [body, ,clearBody] = useLocalStorage("body");
+  const router = useRouter();
+
+  async function createArticle(
+    url: string,
+    { arg }: { arg: FormValues }
+  ): Promise<ArticleResponse> {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(arg),
+    });
+    return response.json();
+  }
+
+  const { trigger, data, isMutating } = useSWRMutation(
+    "/api/v1/articles",
+    createArticle
+  );
 
   const formik = useFormik<FormValues>({
     initialValues: {
-      title: "",
+      title: title, // localStorageの値を使用
       description: "",
-      content: "",
+      body: body, // localStorageの値を使用
       slug: "",
+      thumbnailUrl: "",
+      isPublished: false,
+      token: token,
     },
+    enableReinitialize: true,
     validationSchema: yup.object({
-      title: yup
-        .string()
-        .required("Title is required")
-        .max(255, "Title must be less than 255 characters"),
       description: yup
         .string()
-        .required("Description is required")
-        .max(255, "Description must be less than 255 characters"),
-      content: yup.string().required("Content is required"),
+        .required("説明は必須です。")
+        .max(255, "説明は255文字以内で入力してください。"),
       slug: yup
         .string()
-        .required("Slug is required")
-        .max(255, "Slug must be less than 255 characters"),
+        .required("スラッグは必須です。")
+        .max(255, "スラッグは255文字以内で入力してください。"),
+      thumbnailUrl: yup
+        .string()
+        .url()
+        .required("サムネイルURLは必須です。")
+        .max(255, "サムネイルURLは255文字以内で入力してください。"),
     }),
-    onSubmit: values => {
-      console.log(values, token);
+    onSubmit: async values => {
+      try {
+        const title = localStorage?.getItem("title") || "";
+        const body = localStorage?.getItem("body") || "";
+        if (title === "" || body === "") return;
+
+        const submitValues: FormValues = {
+          ...values,
+          title: title,
+          body: body,
+        };
+        const response = await trigger(submitValues);
+        clearTitle();
+        clearBody();
+        router.push(`/articles/${response.slug}`);
+      } catch (error) {
+        console.error("Article creation error:");
+      }
     },
   });
+
   return {
+    data,
     formik,
+    isMutating,
     setToken,
   };
 }

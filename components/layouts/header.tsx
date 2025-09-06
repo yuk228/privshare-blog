@@ -4,7 +4,6 @@ import { ThemeToggle } from "@/components/layouts/theme-toggle";
 import SignIn from "@/components/layouts/signin";
 import { Button } from "@/components/ui/button";
 
-
 export default function Header() {
   return (
     <header className="fixed top-0 w-full z-50 backdrop-blur-sm border-b border-foreground/10">

@@ -10,7 +10,7 @@ import { CreateArticleDialog } from "@/components/article/new/create-article-dia
 
 export default function Page() {
   const [title, setTitle] = useLocalStorage("title");
-  const [content, setContent] = useLocalStorage("content");
+  const [body, setBody] = useLocalStorage("body");
 
   return (
     <div className="px-4 lg:px-8 max-w-4xl mx-auto mb-8">
@@ -30,10 +30,10 @@ export default function Page() {
             <CreateArticleDialog />
           </div>
           <TabsContent value="write">
-            <Write content={content} setContent={setContent} />
+            <Write body={body} setBody={setBody} />
           </TabsContent>
           <TabsContent value="preview">
-            <Preview content={content} title={title} />
+            <Preview body={body} title={title} />
           </TabsContent>
         </Tabs>
       </div>
@@ -42,19 +42,19 @@ export default function Page() {
 }
 
 type WriteProps = {
-  content: string;
-  setContent: (content: string) => void;
+  body: string;
+  setBody: (body: string) => void;
 };
 
-function Write({ content, setContent }: WriteProps) {
+function Write({ body, setBody }: WriteProps) {
   return (
     <div>
       <div className="flex flex-col gap-4">
         <Textarea
           placeholder="content"
           className="h-[500px]"
-          value={content}
-          onChange={e => setContent(e.target.value)}
+          value={body}
+          onChange={e => setBody(e.target.value)}
         />
       </div>
     </div>
@@ -62,16 +62,16 @@ function Write({ content, setContent }: WriteProps) {
 }
 
 type PreviewProps = {
-  content: string;
+  body: string;
   title: string;
 };
 
-function Preview({ content, title }: PreviewProps) {
+function Preview({ body, title }: PreviewProps) {
   return (
     <div className="w-full">
       <ScrollArea className="h-[500px]">
         <h1 className="text-4xl font-bold mb-4">{title}</h1>
-        <MarkdownRenderer content={content || ""} />
+        <MarkdownRenderer content={body || ""} />
       </ScrollArea>
     </div>
   );
