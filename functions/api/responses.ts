@@ -16,6 +16,18 @@ export function Created(data: any) {
   return NextResponse.json(data, { status: 201 });
 }
 
+export function Updated(data: any) {
+  return NextResponse.json(data, { status: 200 });
+}
+
+export function Ok() {
+  return NextResponse.json({ status: 200 });
+}
+
 export function UnprocessableEntity() {
   return NextResponse.json({ error: "Unprocessable Entity" }, { status: 422 });
+}
+
+export function InternalServerError() {
+  return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
 }

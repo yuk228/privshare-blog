@@ -19,8 +19,8 @@ type UseCreateArticle = {
 
 export function useCreateArticle(): UseCreateArticle {
   const [token, setToken] = useState("");
-  const [title, ,clearTitle] = useLocalStorage("title");
-  const [body, ,clearBody] = useLocalStorage("body");
+  const [title, , clearTitle] = useLocalStorage("title");
+  const [body, , clearBody] = useLocalStorage("body");
   const router = useRouter();
 
   async function createArticle(

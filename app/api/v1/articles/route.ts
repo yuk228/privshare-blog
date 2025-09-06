@@ -2,6 +2,7 @@ import { auth } from "@/auth";
 import {
   Created,
   Forbidden,
+  InternalServerError,
   Unauthorized,
   UnprocessableEntity,
 } from "@/functions/api/responses";
@@ -27,14 +28,19 @@ export async function POST(request: NextRequest) {
     return UnprocessableEntity();
   }
 
-  const article = await createArticle({
-    title,
-    description,
-    body,
-    slug,
-    thumbnailUrl,
-    authorId: user?.id as number,
-    isPublished: false,
-  });
-  return Created(article);
+  try {
+    const article = await createArticle({
+      title,
+      description,
+      body,
+      slug,
+      thumbnailUrl,
+      authorId: user?.id as number,
+      isPublished: false,
+    });
+    return Created(article);
+  } catch (error) {
+    console.error("Article creation error:", error);
+    return InternalServerError();
+  }
 }
