@@ -33,10 +33,10 @@ model Article {
   thumbnailUrl String      @db.VarChar(255)
   slug        String       @unique @db.VarChar(255)
   isPublished Boolean      @default(false)
+  category    Category     @default(OTHER)
   authorId    Int
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
-  articleTags ArticleTag[]
   author      User         @relation(fields: [authorId], references: [id], onDelete: Cascade)
   comments    Comment[]
 
@@ -47,27 +47,6 @@ model Article {
   @@map("articles")
 }
 
-model Tag {
-  id       Int          @id @default(autoincrement())
-  name     String       @db.VarChar(255)
-  articles ArticleTag[]
-
-  @@index([name])
-  @@map("tags")
-}
-
-model ArticleTag {
-  articleId Int
-  tagId     Int
-  article   Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
-  tag       Tag     @relation(fields: [tagId], references: [id])
-
-  @@id([articleId, tagId])
-  @@index([articleId])
-  @@index([tagId])
-  @@index([articleId, tagId])
-  @@map("article_tags")
-}
 
 model Comment {
   id        Int      @id @default(autoincrement())
@@ -89,4 +68,10 @@ enum Role {
   OWNER
   ADMIN
   USER
+}
+
+enum Category {
+  PRIVACY
+  ENCRYPTION
+  OTHER
 }

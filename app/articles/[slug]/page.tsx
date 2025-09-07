@@ -1,9 +1,8 @@
-import fs from "fs";
 import Image from "next/image";
-import { getArticleData } from "@/functions/articles/getArticleData";
+import { getArticleData } from "@/functions/articles/article";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { MarkdownRenderer } from "@/components/article/markdown-renderer";
+import { prisma } from "@/prisma/prisma";
 
 export default async function Page({
   params,
@@ -12,13 +11,13 @@ export default async function Page({
 }) {
   const { slug } = await params;
   try {
-    const post = await getArticleData({ slug });
+    const article = await getArticleData({ slug });
     return (
       <article className="max-w-4xl mx-auto">
         <div className="mb-8 overflow-hidden rounded-2xl">
           <Image
-            alt={post.frontMatter.title}
-            src={post.frontMatter.img || ""}
+            alt={article.title}
+            src={article.thumbnailUrl || ""}
             width={1200}
             height={400}
             className="w-full h-64 md:h-80 object-cover"
@@ -27,26 +26,12 @@ export default async function Page({
 
         <div className="mb-8">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-            {post.frontMatter.title}
+            {article.title}
           </h1>
-
-          {post.frontMatter.tags && (
-            <div className="flex flex-wrap gap-2 mb-6">
-              {post.frontMatter.tags.map(tag => (
-                <Link
-                  href={`/articles/tags/${tag}`}
-                  className="px-4 py-2 text-sm font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
-                  key={tag}
-                >
-                  #{tag}
-                </Link>
-              ))}
-            </div>
-          )}
         </div>
 
         <div>
-          <MarkdownRenderer content={post.content} />
+          <MarkdownRenderer content={article.body} />
         </div>
       </article>
     );
@@ -56,9 +41,12 @@ export default async function Page({
 }
 
 export async function generateStaticParams() {
-  const files = fs.readdirSync("./app/articles/posts", "utf-8");
-  const slugs = await files.map(file => file.replace(/\.md$/, ""));
-  return slugs.map(slug => ({
-    slug,
+  const articles = await prisma.article.findMany({
+    select: {
+      slug: true,
+    },
+  });
+  return articles.map(article => ({
+    slug: article.slug,
   }));
 }

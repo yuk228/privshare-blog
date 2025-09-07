@@ -44,12 +44,12 @@ export function useCreateArticle(): UseCreateArticle {
 
   const formik = useFormik<FormValues>({
     initialValues: {
-      title: title, // localStorageの値を使用
+      title: title,
       description: "",
-      body: body, // localStorageの値を使用
+      body: body,
       slug: "",
       thumbnailUrl: "",
-      isPublished: false,
+      isPublished: true,
       token: token,
     },
     enableReinitialize: true,

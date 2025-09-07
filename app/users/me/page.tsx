@@ -1,19 +1,18 @@
 import { auth } from "@/auth";
-import { prisma } from "@/prisma/prisma";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { currentUser } from "@/functions/users/user";
+import { redirect } from "next/navigation";
 
-export default async function Me() {
+export default async function Page() {
   const session = await auth();
-  const user = await prisma.user.findUnique({
-    where: {
-      email: session?.user?.email || "",
-    },
-  });
-  console.log(user);
+  if (!session?.user) {
+    return redirect("/articles");
+  }
+  const user = await currentUser({ sessionUser: session.user });
 
   return (
     <div className="px-4 lg:px-8 max-w-4xl mx-auto mb-8">

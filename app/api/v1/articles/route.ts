@@ -8,7 +8,7 @@ import {
 } from "@/functions/api/responses";
 import { canCreateArticle, createArticle } from "@/functions/articles/article";
 import { validateToken } from "@/functions/turnstile";
-import { currentUser } from "@/functions/users/current-user";
+import { currentUser } from "@/functions/users/user";
 import { NextRequest } from "next/server";
 
 export async function POST(request: NextRequest) {

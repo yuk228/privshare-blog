@@ -83,4 +83,4 @@ FaceID: ON
 
 ApplePayの確認: OFF
 
-JavaScript: OFF (ONにするとJavaScriptが無効化されます)
+JavaScript: ON (OFFにするとJavaScriptが無効化されます)

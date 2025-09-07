@@ -25,3 +25,18 @@ export type ArticleResponse = {
   createdAt: Date;
   updatedAt: Date;
 };
+
+export type ArticleSummary = {
+  uuid: string;
+  title: string;
+  description: string;
+  slug: string;
+  thumbnailUrl: string;
+  createdAt: Date;
+  updatedAt: Date;
+  author: {
+    uuid: string;
+    name: string;
+    avatarUrl: string;
+  };
+};

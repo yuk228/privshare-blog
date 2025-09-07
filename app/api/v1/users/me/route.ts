@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { NotFound, Unauthorized } from "@/functions/api/responses";
-import { currentUser } from "@/functions/users/current-user";
+import { currentUser } from "@/functions/users/user";
 
 export async function GET() {
   const session = await auth();
