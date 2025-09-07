@@ -4,6 +4,9 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { CATEGORIES_LINKS } from "@/components/layouts/sidebar";
 import Link from "next/link";
 
+export const revalidate = 3600;
+export const dynamic = "force-static";
+
 export default async function Page() {
   const articles = await getArticlesSummaries({ category: undefined });
 

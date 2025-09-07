@@ -5,6 +5,9 @@ import { CATEGORIES_LINKS } from "@/components/layouts/sidebar";
 import { prisma } from "@/prisma/prisma";
 import Link from "next/link";
 
+export const revalidate = 7200;
+export const dynamic = "force-static";
+
 type Props = {
   params: Promise<{ name: string }>;
 };
@@ -65,9 +68,6 @@ async function TableOfContents({ name }: TableOfContentsProps) {
           >
             {category.icon}
             <span>{category.label}</span>
-            <span className="text-xs bg-muted text-muted-foreground px-2 py-1 rounded">
-              3
-            </span>
           </Link>
         ))}
       </nav>

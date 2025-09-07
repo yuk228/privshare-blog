@@ -3,12 +3,13 @@ import Image from "next/image";
 import { ArticleSummary } from "@/entities/articles";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { formatDate } from "@/functions/shared/formatdate";
+import { memo } from "react";
 
 type Props = {
   articles: ArticleSummary[];
 };
 
-export async function ArticlesList({ articles }: Props) {
+export const ArticlesList = memo(function ArticlesList({ articles }: Props) {
   return (
     <div className="space-y-6">
       {articles.map(article => (
@@ -16,13 +17,15 @@ export async function ArticlesList({ articles }: Props) {
       ))}
     </div>
   );
-}
+});
 
 type HorizontalCardProps = {
   article: ArticleSummary;
 };
 
-function HorizontalCard({ article }: HorizontalCardProps) {
+const HorizontalCard = memo(function HorizontalCard({
+  article,
+}: HorizontalCardProps) {
   return (
     <article className="group bg-background border border-border rounded-lg overflow-hidden transition-all duration-200 hover:border-foreground/30">
       <Link href={`/articles/${article.slug}`} className="block">
@@ -35,7 +38,7 @@ function HorizontalCard({ article }: HorizontalCardProps) {
                 "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=500&fit=crop&crop=center"
               }
               fill
-              className="object-cover"
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, 320px"
             />
           </div>
@@ -76,4 +79,4 @@ function HorizontalCard({ article }: HorizontalCardProps) {
       </Link>
     </article>
   );
-}
+});

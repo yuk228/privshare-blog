@@ -3,12 +3,12 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="max-w-4xl mx-auto">
-      <div className="flex flex-col items-center justify-center gap-6 mb-16">
-        <h1 className="text-5xl md:text-6xl font-bold text-center bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+    <div>
+      <div className="flex flex-col items-start justify-center gap-6 mb-16">
+        <h1 className="text-5xl md:text-6xl font-bold text-left bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
           PrivShare.net
         </h1>
-        <p className="text-xl md:text-2xl text-muted-foreground text-center font-medium">
+        <p className="text-xl md:text-2xl text-muted-foreground text-left font-medium">
           匿名性に特化したプライバシーガイド
         </p>
         <p className="text-lg md:text-xl text-center text-muted-foreground max-w-2xl">

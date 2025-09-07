@@ -4,6 +4,9 @@ import { notFound } from "next/navigation";
 import { MarkdownRenderer } from "@/components/article/markdown-renderer";
 import { prisma } from "@/prisma/prisma";
 
+export const revalidate = 7200;
+export const dynamic = "force-static";
+
 export default async function Page({
   params,
 }: {
@@ -42,6 +45,9 @@ export default async function Page({
 
 export async function generateStaticParams() {
   const articles = await prisma.article.findMany({
+    where: {
+      isPublished: true,
+    },
     select: {
       slug: true,
     },

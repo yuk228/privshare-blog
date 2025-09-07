@@ -44,6 +44,7 @@ model Article {
   @@index([authorId])
   @@index([createdAt])
   @@index([isPublished, createdAt])
+  @@index([isPublished, category, createdAt])
   @@map("articles")
 }
 
