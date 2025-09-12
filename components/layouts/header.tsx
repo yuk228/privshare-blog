@@ -4,8 +4,10 @@ import { ThemeToggle } from "@/components/layouts/theme-toggle";
 import SignIn from "@/components/layouts/signin";
 import { Button } from "@/components/ui/button";
 import Sidebar from "@/components/layouts/sidebar";
+import { auth } from "@/auth";
 
-export default function Header() {
+export default async function Header() {
+  const session = await auth();
   return (
     <header className="fixed top-0 w-full z-50 backdrop-blur-sm border-b border-foreground/10">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
@@ -23,9 +25,11 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <SignIn />
           <ThemeToggle />
-          <Button asChild>
-            <Link href="/articles/new">New Post</Link>
-          </Button>
+          {session?.user && (
+            <Button asChild>
+              <Link href="/articles/new">New Post</Link>
+            </Button>
+          )}
         </div>
       </div>
     </header>

@@ -1,46 +1,57 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { CircleAlert } from "lucide-react";
 
-export default function Home() {
+
+export default function Page() {
   return (
-    <div>
-      <div className="flex flex-col items-start justify-center gap-6 mb-16">
-        <h1 className="text-5xl md:text-6xl font-bold text-left bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-          PrivShare.net
-        </h1>
-        <p className="text-xl md:text-2xl text-muted-foreground text-left font-medium">
-          匿名性に特化したプライバシーガイド
-        </p>
-        <p className="text-lg md:text-xl text-center text-muted-foreground max-w-2xl">
-          たった1クリックで、プライバシーを犠牲にしないで下さい
-        </p>
-        <div className="flex items-center justify-center gap-6 mb-8">
-          <Button asChild>
-            <Link href="/articles">今すぐ始める</Link>
-          </Button>
+    <>
+      <section className="flex flex-col items-center justify-center min-h-[80vh] space-y-8 px-4">
+        <div className="text-center space-y-6">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+          > 
+            <div className="flex items-center justify-center gap-2">
+              <CircleAlert className="w-4 h-4 text-red-500" />
+              <p className="text-sm font-bold">このサイトは開発中であり、掲載されている記事はサンプルです。</p>
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
+              Protect your <span className="text-red-500">Privacy Online</span>
+            </h1>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              PrivShareは、匿名化に特化したプライバシーブログです。
+              <br />
+              あなたの個人情報がビジネスに使用されるのを防ぐため、匿名化について学びましょう。
+            </p>
+          </motion.div>
         </div>
-      </div>
-      <div className="space-y-16">
-        <section className="prose prose-lg dark:prose-invert max-w-none">
-          <h2 className="text-3xl font-bold border-b border-border pb-4 mb-6">
-            概要
-          </h2>
-          <div className="space-y-4 leading-relaxed">
-            <p>
-              現代のインターネット経済は、「監視資本主義」とも呼ばれる新たなビジネスモデルによって支配されています。
-            </p>
-            <p>
-              多くの大手テック企業は、表面上は高品質な無料のサービスを提供する代わりに、ユーザーの行動データを収集・分析・販売しています。
-            </p>
-            <p>
-              ITの知識の無い人々にとってこれを避けることは困難であり、もはや生活に必須な多くのインターネットサービスを自分のプライバシーを犠牲にしながら使用しています。
-            </p>
-            <p>
-              このサイトでは、あなたのプライバシー・匿名性を最大限に保つための情報を提供します。
-            </p>
-          </div>
-        </section>
-      </div>
-    </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          className="flex  items-center gap-4"
+        >
+          <Button asChild size="lg">
+            <Link href="/articles/categories/privacy">今すぐ始める</Link>
+          </Button>
+          <Button variant="outline" size="lg">
+            <Link href="/login">ログインする</Link>
+          </Button>
+        </motion.div>
+      </section>
+    </>
   );
 }

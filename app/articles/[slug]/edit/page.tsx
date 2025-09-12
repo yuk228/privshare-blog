@@ -1,6 +1,5 @@
 import { auth } from "@/auth";
-import { Forbidden, Unauthorized } from "@/functions/api/responses";
-import { canUpdateArticle } from "@/functions/articles/article";
+import { Unauthorized } from "@/functions/api/responses";
 import { currentUser } from "@/functions/users/user";
 
 type Props = {

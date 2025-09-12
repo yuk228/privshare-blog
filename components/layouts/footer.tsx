@@ -4,7 +4,7 @@ import React from "react";
 export default function Footer() {
   return (
     <footer className="py-5">
-      <div className="flex flex-col md:flex-row items-center justify-center text-muted-foreground">
+      <div className="flex flex-col md:flex-row items-center justify-center text-muted-foreground gap-2">
         <p>Copyright © 2025 PrivShare</p>
         <p>
           The source code is available on{" "}
