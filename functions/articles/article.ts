@@ -1,5 +1,5 @@
 import { prisma } from "@/prisma/prisma";
-import { Category, User } from "@/app/generated/prisma";
+import { Article, Category, User } from "@/app/generated/prisma";
 import {
   ArticleResponse,
   ArticleRequest,
@@ -166,5 +166,15 @@ export async function updateArticle({
 }
 
 export function canCreateArticle(user: User) {
-  return user.role === "OWNER";
+  return user.role === "OWNER" || user.role === "ADMIN";
+}
+
+export function canUpdateArticle(user: User, article: Article) {
+  if (user.role === "OWNER") {
+    return true;
+  }
+  if (user.role === "ADMIN" && user.id === article.authorId) {
+    return true;
+  }
+  return false;
 }
