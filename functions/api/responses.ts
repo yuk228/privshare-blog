@@ -20,8 +20,8 @@ export function Updated(data: any) {
   return NextResponse.json(data, { status: 200 });
 }
 
-export function Ok() {
-  return NextResponse.json({ status: 200 });
+export function Ok(data?: any) {
+  return NextResponse.json(data, { status: 200 });
 }
 
 export function UnprocessableEntity() {

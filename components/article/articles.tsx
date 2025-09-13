@@ -13,19 +13,17 @@ export const ArticlesList = memo(function ArticlesList({ articles }: Props) {
   return (
     <div className="space-y-6">
       {articles.map(article => (
-        <HorizontalCard key={article.uuid} article={article} />
+        <ArticleCard key={article.uuid} article={article} />
       ))}
     </div>
   );
 });
 
-type HorizontalCardProps = {
+type ArticleCardProps = {
   article: ArticleSummary;
 };
 
-const HorizontalCard = memo(function HorizontalCard({
-  article,
-}: HorizontalCardProps) {
+function ArticleCard({ article }: ArticleCardProps) {
   return (
     <article className="group bg-background border border-border rounded-lg overflow-hidden transition-all duration-200 hover:border-foreground/30">
       <Link href={`/articles/${article.slug}`} className="block">
@@ -79,4 +77,4 @@ const HorizontalCard = memo(function HorizontalCard({
       </Link>
     </article>
   );
-});
+}

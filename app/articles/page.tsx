@@ -8,7 +8,7 @@ export const revalidate = 3600;
 export const dynamic = "force-static";
 
 export default async function Page() {
-  const articles = await getArticlesSummaries({ category: undefined });
+  const articles = await getArticlesSummaries({});
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">

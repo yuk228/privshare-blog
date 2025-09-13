@@ -9,12 +9,13 @@ import { notFound } from "next/navigation";
 
 type GetArticlesSummariesProps = {
   category?: string;
+  limit?: number;
 };
 
-export async function getArticlesSummaries(
-  params: GetArticlesSummariesProps = {}
-): Promise<ArticleSummary[]> {
-  const { category } = params;
+export async function getArticlesSummaries({
+  category,
+  limit,
+}: GetArticlesSummariesProps): Promise<ArticleSummary[]> {
   const whereClause = category
     ? {
         isPublished: true,
@@ -43,6 +44,7 @@ export async function getArticlesSummaries(
     orderBy: {
       createdAt: "desc",
     },
+    take: limit,
   });
   return articles as ArticleSummary[];
 }
