@@ -58,29 +58,29 @@ export async function getArticleData({
 }: GetArticleDataProps): Promise<ArticleResponse> {
   const article = await prisma.article.findUnique({
     where: { slug },
-    select: {
-      uuid: true,
-      title: true,
-      description: true,
-      body: true,
-      slug: true,
-      thumbnailUrl: true,
-      isPublished: true,
-      createdAt: true,
-      updatedAt: true,
-      author: {
-        select: {
-          uuid: true,
-          name: true,
-          avatarUrl: true,
-        },
-      },
+    include: {
+      author: true,
     },
   });
   if (!article) {
     notFound();
   }
-  return article as ArticleResponse;
+  return {
+    uuid: article.uuid,
+    title: article.title,
+    description: article.description,
+    body: article.body,
+    slug: article.slug,
+    thumbnailUrl: article.thumbnailUrl,
+    isPublished: article.isPublished,
+    createdAt: article.createdAt,
+    updatedAt: article.updatedAt,
+    author: {
+      uuid: article.author.uuid,
+      name: article.author.name,
+      avatarUrl: article.author.avatarUrl || "",
+    },
+  };
 }
 
 type CreateArticleProps = ArticleRequest & {
