@@ -1,54 +1,54 @@
-import { useFormik } from "formik";
-import { useState } from "react";
-import * as yup from "yup";
-import useSWRMutation from "swr/mutation";
-import { useLocalStorage } from "@/functions/hooks/local-storage-hooks";
-import { ArticleRequest, ArticleResponse } from "@/entities/articles";
-import { useRouter } from "next/navigation";
+import { useFormik } from 'formik'
+import { useState } from 'react'
+import * as yup from 'yup'
+import useSWRMutation from 'swr/mutation'
+import { useLocalStorage } from '@/functions/hooks/local-storage-hooks'
+import { ArticleRequest, ArticleResponse } from '@/entities/articles'
+import { useRouter } from 'next/navigation'
 
 type FormValues = ArticleRequest & {
-  token: string;
-};
+  token: string
+}
 
 type UseCreateArticle = {
-  data: ArticleResponse | undefined;
-  formik: ReturnType<typeof useFormik<FormValues>>;
-  isMutating: boolean;
-  setToken: (token: string) => void;
-};
+  data: ArticleResponse | undefined
+  formik: ReturnType<typeof useFormik<FormValues>>
+  isMutating: boolean
+  setToken: (token: string) => void
+}
 
 export function useCreateArticle(): UseCreateArticle {
-  const [token, setToken] = useState("");
-  const [title, , clearTitle] = useLocalStorage("title");
-  const [body, , clearBody] = useLocalStorage("body");
-  const router = useRouter();
+  const [token, setToken] = useState('')
+  const [title, , clearTitle] = useLocalStorage('title')
+  const [body, , clearBody] = useLocalStorage('body')
+  const router = useRouter()
 
   async function createArticle(
     url: string,
     { arg }: { arg: FormValues }
   ): Promise<ArticleResponse> {
     const response = await fetch(url, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(arg),
-    });
-    return response.json();
+    })
+    return response.json()
   }
 
   const { trigger, data, isMutating } = useSWRMutation(
-    "/api/v1/articles",
+    '/api/v1/articles',
     createArticle
-  );
+  )
 
   const formik = useFormik<FormValues>({
     initialValues: {
       title: title,
-      description: "",
+      description: '',
       body: body,
-      slug: "",
-      thumbnailUrl: "",
+      slug: '',
+      thumbnailUrl: '',
       isPublished: true,
       token: token,
     },
@@ -56,43 +56,43 @@ export function useCreateArticle(): UseCreateArticle {
     validationSchema: yup.object({
       description: yup
         .string()
-        .required("説明は必須です。")
-        .max(255, "説明は255文字以内で入力してください。"),
+        .required('説明は必須です。')
+        .max(255, '説明は255文字以内で入力してください。'),
       slug: yup
         .string()
-        .required("スラッグは必須です。")
-        .max(255, "スラッグは255文字以内で入力してください。"),
+        .required('スラッグは必須です。')
+        .max(255, 'スラッグは255文字以内で入力してください。'),
       thumbnailUrl: yup
         .string()
         .url()
-        .required("サムネイルURLは必須です。")
-        .max(255, "サムネイルURLは255文字以内で入力してください。"),
+        .required('サムネイルURLは必須です。')
+        .max(255, 'サムネイルURLは255文字以内で入力してください。'),
     }),
     onSubmit: async values => {
       try {
-        const title = localStorage?.getItem("title") || "";
-        const body = localStorage?.getItem("body") || "";
-        if (title === "" || body === "") return;
+        const title = localStorage?.getItem('title') || ''
+        const body = localStorage?.getItem('body') || ''
+        if (title === '' || body === '') return
 
         const submitValues: FormValues = {
           ...values,
           title: title,
           body: body,
-        };
-        const response = await trigger(submitValues);
-        clearTitle();
-        clearBody();
-        router.push(`/articles/${response.slug}`);
+        }
+        const response = await trigger(submitValues)
+        clearTitle()
+        clearBody()
+        router.push(`/articles/${response.slug}`)
       } catch (error) {
-        console.error("Article creation error:");
+        console.error('Article creation error:')
       }
     },
-  });
+  })
 
   return {
     data,
     formik,
     isMutating,
     setToken,
-  };
+  }
 }

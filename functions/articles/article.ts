@@ -1,16 +1,16 @@
-import { prisma } from "@/prisma/prisma";
-import { Article, Category, User } from "@/app/generated/prisma";
+import { prisma } from '@/prisma/prisma'
+import { Article, Category, User } from '@/app/generated/prisma'
 import {
   ArticleResponse,
   ArticleRequest,
   ArticleSummary,
-} from "@/entities/articles";
-import { notFound } from "next/navigation";
+} from '@/entities/articles'
+import { notFound } from 'next/navigation'
 
 type GetArticlesSummariesProps = {
-  category?: string;
-  limit?: number;
-};
+  category?: string
+  limit?: number
+}
 
 export async function getArticlesSummaries({
   category,
@@ -21,7 +21,7 @@ export async function getArticlesSummaries({
         isPublished: true,
         category: category.toUpperCase() as Category,
       }
-    : { isPublished: true };
+    : { isPublished: true }
 
   const articles = await prisma.article.findMany({
     where: whereClause,
@@ -42,16 +42,16 @@ export async function getArticlesSummaries({
       },
     },
     orderBy: {
-      createdAt: "desc",
+      createdAt: 'desc',
     },
     take: limit,
-  });
-  return articles as ArticleSummary[];
+  })
+  return articles as ArticleSummary[]
 }
 
 type GetArticleDataProps = {
-  slug: string;
-};
+  slug: string
+}
 
 export async function getArticleData({
   slug,
@@ -61,9 +61,9 @@ export async function getArticleData({
     include: {
       author: true,
     },
-  });
+  })
   if (!article) {
-    notFound();
+    notFound()
   }
   return {
     uuid: article.uuid,
@@ -78,14 +78,14 @@ export async function getArticleData({
     author: {
       uuid: article.author.uuid,
       name: article.author.name,
-      avatarUrl: article.author.avatarUrl || "",
+      avatarUrl: article.author.avatarUrl || '',
     },
-  };
+  }
 }
 
 type CreateArticleProps = ArticleRequest & {
-  authorId: number;
-};
+  authorId: number
+}
 
 export async function createArticle({
   title,
@@ -109,7 +109,7 @@ export async function createArticle({
     include: {
       author: true,
     },
-  });
+  })
 
   return {
     uuid: article.uuid,
@@ -124,14 +124,14 @@ export async function createArticle({
     author: {
       uuid: article.author.uuid,
       name: article.author.name,
-      avatarUrl: article.author.avatarUrl || "",
+      avatarUrl: article.author.avatarUrl || '',
     },
-  };
+  }
 }
 
 type UpdateArticleProps = ArticleRequest & {
-  uuid: string;
-};
+  uuid: string
+}
 
 export async function updateArticle({
   uuid,
@@ -148,7 +148,7 @@ export async function updateArticle({
     include: {
       author: true,
     },
-  });
+  })
   return {
     uuid: article.uuid,
     title: article.title,
@@ -162,21 +162,21 @@ export async function updateArticle({
     author: {
       uuid: article.author.uuid,
       name: article.author.name,
-      avatarUrl: article.author.avatarUrl || "",
+      avatarUrl: article.author.avatarUrl || '',
     },
-  };
+  }
 }
 
 export function canCreateArticle(user: User) {
-  return user.role === "OWNER" || user.role === "ADMIN";
+  return user.role === 'OWNER' || user.role === 'ADMIN'
 }
 
 export function canUpdateArticle(user: User, article: Article) {
-  if (user.role === "OWNER") {
-    return true;
+  if (user.role === 'OWNER') {
+    return true
   }
-  if (user.role === "ADMIN" && user.id === article.authorId) {
-    return true;
+  if (user.role === 'ADMIN' && user.id === article.authorId) {
+    return true
   }
-  return false;
+  return false
 }

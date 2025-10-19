@@ -1,34 +1,34 @@
-import { auth } from "@/auth";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { currentUser } from "@/functions/users/user";
-import { redirect } from "next/navigation";
+import { auth } from '@/auth'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
+import { currentUser } from '@/functions/users/user'
+import { redirect } from 'next/navigation'
 
 export default async function Page() {
-  const session = await auth();
+  const session = await auth()
   if (!session?.user) {
-    return redirect("/articles");
+    return redirect('/articles')
   }
-  const user = await currentUser({ sessionUser: session.user });
+  const user = await currentUser({ sessionUser: session.user })
 
   return (
     <div className="px-4 lg:px-8 max-w-4xl mx-auto mb-8">
       <div className="flex flex-row items-start md:items-center gap-6">
         <Avatar
           style={{
-            width: "120px",
-            height: "120px",
+            width: '120px',
+            height: '120px',
           }}
         >
           <AvatarImage
-            src={session?.user?.image || ""}
-            alt={session?.user?.name || ""}
+            src={session?.user?.image || ''}
+            alt={session?.user?.name || ''}
           />
           <AvatarFallback className="text-4xl font-bold">
-            {session?.user?.name?.charAt(0) || "U"}
+            {session?.user?.name?.charAt(0) || 'U'}
           </AvatarFallback>
         </Avatar>
 
@@ -53,5 +53,5 @@ export default async function Page() {
         </Tabs>
       </div>
     </div>
-  );
+  )
 }

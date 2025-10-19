@@ -1,16 +1,17 @@
-"use client";
+'use client'
 
-import { Input } from "@/components/ui/input";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Textarea } from "@/components/ui/textarea";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { MarkdownRenderer } from "@/components/article/markdown-renderer";
-import { useLocalStorage } from "@/functions/hooks/local-storage-hooks";
-import { CreateArticleDialog } from "@/components/article/new/create-article-dialog";
+import { Input } from '@/components/ui/input'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Textarea } from '@/components/ui/textarea'
+import { ScrollArea } from '@/components/ui/scroll-area'
+import { MarkdownRenderer } from '@/components/article/markdown-renderer'
+import { useLocalStorage } from '@/functions/hooks/local-storage-hooks'
+import { CreateArticleDialog } from '@/components/article/new/create-article-dialog'
 
 export default function Page() {
-  const [title, setTitle] = useLocalStorage("title");
-  const [body, setBody] = useLocalStorage("body");
+  // const currentUser = useCurrentUser
+  const [title, setTitle] = useLocalStorage('title')
+  const [body, setBody] = useLocalStorage('body')
 
   return (
     <div className="px-4 lg:px-8 max-w-4xl mx-auto mb-8">
@@ -38,13 +39,13 @@ export default function Page() {
         </Tabs>
       </div>
     </div>
-  );
+  )
 }
 
 type WriteProps = {
-  body: string;
-  setBody: (body: string) => void;
-};
+  body: string
+  setBody: (body: string) => void
+}
 
 function Write({ body, setBody }: WriteProps) {
   return (
@@ -58,21 +59,21 @@ function Write({ body, setBody }: WriteProps) {
         />
       </div>
     </div>
-  );
+  )
 }
 
 type PreviewProps = {
-  body: string;
-  title: string;
-};
+  body: string
+  title: string
+}
 
 function Preview({ body, title }: PreviewProps) {
   return (
     <div className="w-full">
       <ScrollArea className="h-[500px]">
         <h1 className="text-4xl font-bold mb-4">{title}</h1>
-        <MarkdownRenderer content={body || ""} />
+        <MarkdownRenderer content={body || ''} />
       </ScrollArea>
     </div>
-  );
+  )
 }

@@ -1,22 +1,22 @@
-import { ArticlesList } from "@/components/article/articles";
-import { getArticlesSummaries } from "@/functions/articles/article";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { CATEGORIES_LINKS } from "@/components/layouts/sidebar";
-import { prisma } from "@/prisma/prisma";
-import Link from "next/link";
+import { ArticlesList } from '@/components/article/articles'
+import { getArticlesSummaries } from '@/functions/articles/article'
+import { ScrollArea } from '@/components/ui/scroll-area'
+import { CATEGORIES_LINKS } from '@/components/layouts/sidebar'
+import { prisma } from '@/prisma/prisma'
+import Link from 'next/link'
 
-export const revalidate = 7200;
-export const dynamic = "force-static";
+export const revalidate = 7200
+export const dynamic = 'force-static'
 
 type Props = {
-  params: Promise<{ name: string }>;
-};
+  params: Promise<{ name: string }>
+}
 
 export default async function Page({ params }: Props) {
-  const { name } = await params;
+  const { name } = await params
   const articles = await getArticlesSummaries({
     category: name,
-  });
+  })
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
@@ -44,12 +44,12 @@ export default async function Page({ params }: Props) {
         </main>
       </div>
     </div>
-  );
+  )
 }
 
 type TableOfContentsProps = {
-  name: string;
-};
+  name: string
+}
 
 async function TableOfContents({ name }: TableOfContentsProps) {
   return (
@@ -61,9 +61,9 @@ async function TableOfContents({ name }: TableOfContentsProps) {
             key={category.label}
             href={category.href}
             className={`w-full flex items-center justify-between px-3 py-2 text-left rounded-md text-sm transition-colors ${
-              "/articles/categories/" + name === category.href
-                ? "bg-muted text-foreground"
-                : "text-muted-foreground hover:bg-muted hover:text-foreground"
+              '/articles/categories/' + name === category.href
+                ? 'bg-muted text-foreground'
+                : 'text-muted-foreground hover:bg-muted hover:text-foreground'
             }`}
           >
             {category.icon}
@@ -72,16 +72,16 @@ async function TableOfContents({ name }: TableOfContentsProps) {
         ))}
       </nav>
     </div>
-  );
+  )
 }
 
 export async function generateStaticParams() {
   const categories = await prisma.article.groupBy({
-    by: ["category"],
+    by: ['category'],
     where: { isPublished: true },
-  });
+  })
 
   return categories.map(({ category }) => ({
     name: category.toLowerCase(),
-  }));
+  }))
 }

@@ -4,33 +4,33 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
-import { BookOpen, LibraryBig, Menu, Lock } from "lucide-react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+} from '@/components/ui/sheet'
+import { BookOpen, LibraryBig, Menu, Lock } from 'lucide-react'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 
 export const CATEGORIES_LINKS = [
   {
-    label: "全て",
+    label: '全て',
     icon: <BookOpen className="w-5 h-5" />,
-    href: "/articles",
+    href: '/articles',
   },
   {
-    label: "匿名化・プライバシー",
+    label: '匿名化・プライバシー',
     icon: <LibraryBig className="w-5 h-5" />,
-    href: "/articles/categories/privacy",
+    href: '/articles/categories/privacy',
   },
   {
-    label: "暗号化",
+    label: '暗号化',
     icon: <Lock className="w-5 h-5" />,
-    href: "/articles/categories/encryption",
+    href: '/articles/categories/encryption',
   },
   {
-    label: "その他",
+    label: 'その他',
     icon: <BookOpen className="w-5 h-5" />,
-    href: "/articles/categories/other",
+    href: '/articles/categories/other',
   },
-];
+]
 
 export default function Sidebar() {
   return (
@@ -53,17 +53,17 @@ export default function Sidebar() {
         </div>
       </SheetContent>
     </Sheet>
-  );
+  )
 }
 
 type NavLinkProps = {
-  label: string;
+  label: string
   links: {
-    href: string;
-    icon: React.ReactNode;
-    label: string;
-  }[];
-};
+    href: string
+    icon: React.ReactNode
+    label: string
+  }[]
+}
 
 function NavLink({ label, links }: NavLinkProps) {
   return (
@@ -86,5 +86,5 @@ function NavLink({ label, links }: NavLinkProps) {
         ))}
       </nav>
     </div>
-  );
+  )
 }

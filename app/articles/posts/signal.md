@@ -1,8 +1,8 @@
 ---
-title: "Signal"
-description: "Telegramに変わる最も安全なチャットアプリ"
-tags: ["mobile", "signal"]
-img: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ok3-UoGON-yqPyZWD68cXQHaD4%26pid%3DApi&f=1&ipt=91af40ba3c5bf42406d71bb34643c098423392cc6076e55c9f9aeb5ded7187c8&ipo=images"
+title: 'Signal'
+description: 'Telegramに変わる最も安全なチャットアプリ'
+tags: ['mobile', 'signal']
+img: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ok3-UoGON-yqPyZWD68cXQHaD4%26pid%3DApi&f=1&ipt=91af40ba3c5bf42406d71bb34643c098423392cc6076e55c9f9aeb5ded7187c8&ipo=images'
 ---
 
 ## Signalとは

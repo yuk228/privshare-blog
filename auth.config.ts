@@ -1,4 +1,4 @@
-import type { NextAuthConfig } from "next-auth";
+import type { NextAuthConfig } from 'next-auth'
 
 const authConfig: NextAuthConfig = {
   trustHost: true,
@@ -6,8 +6,6 @@ const authConfig: NextAuthConfig = {
   callbacks: {
     authorized: ({ auth }) => !!auth,
   },
-};
+}
 
-export default authConfig;
-
-
+export default authConfig

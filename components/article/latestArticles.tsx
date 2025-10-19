@@ -1,17 +1,17 @@
-import Link from "next/link";
-import Image from "next/image";
-import { ScrollArea, ScrollBar } from "../ui/scroll-area";
-import { useLatestArticles } from "@/functions/hooks/articles/latest-articles-hooks";
-import { ArticleSummary } from "@/entities/articles";
-import { formatDate } from "@/functions/shared/formatdate";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Skeleton } from "@/components/ui/skeleton";
+import Link from 'next/link'
+import Image from 'next/image'
+import { ScrollArea, ScrollBar } from '../ui/scroll-area'
+import { useLatestArticles } from '@/functions/hooks/articles/latest-articles-hooks'
+import { ArticleSummary } from '@/entities/articles'
+import { formatDate } from '@/functions/shared/formatdate'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Skeleton } from '@/components/ui/skeleton'
 
 export function LatestArticles() {
-  const { data: articles, isLoading } = useLatestArticles();
+  const { data: articles, isLoading } = useLatestArticles()
 
-  if (typeof articles === "undefined" || isLoading) {
-    return <Skeleton className="w-full h-48" />;
+  if (typeof articles === 'undefined' || isLoading) {
+    return <Skeleton className="w-full h-48" />
   }
 
   return (
@@ -23,12 +23,12 @@ export function LatestArticles() {
       </div>
       <ScrollBar orientation="horizontal" />
     </ScrollArea>
-  );
+  )
 }
 
 type LatestArticleCardProps = {
-  article: ArticleSummary;
-};
+  article: ArticleSummary
+}
 
 function LatestArticleCard({ article }: LatestArticleCardProps) {
   return (
@@ -39,7 +39,7 @@ function LatestArticleCard({ article }: LatestArticleCardProps) {
             alt={article.title}
             src={
               article.thumbnailUrl ||
-              "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=500&fit=crop&crop=center"
+              'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=500&fit=crop&crop=center'
             }
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -77,5 +77,5 @@ function LatestArticleCard({ article }: LatestArticleCardProps) {
         </div>
       </Link>
     </article>
-  );
+  )
 }

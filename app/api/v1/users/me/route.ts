@@ -1,16 +1,16 @@
-import { NextResponse } from "next/server";
-import { auth } from "@/auth";
-import { NotFound, Unauthorized } from "@/functions/api/responses";
-import { currentUser } from "@/functions/users/user";
+import { NextResponse } from 'next/server'
+import { auth } from '@/auth'
+import { NotFound, Unauthorized } from '@/functions/api/responses'
+import { currentUser } from '@/functions/users/user'
 
 export async function GET() {
-  const session = await auth();
+  const session = await auth()
   if (!session?.user) {
-    return Unauthorized();
+    return Unauthorized()
   }
-  const user = await currentUser({ sessionUser: session.user });
+  const user = await currentUser({ sessionUser: session.user })
   if (!user) {
-    return NotFound();
+    return NotFound()
   }
-  return NextResponse.json({ user });
+  return NextResponse.json({ user })
 }

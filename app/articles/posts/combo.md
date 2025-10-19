@@ -1,8 +1,8 @@
 ---
-title: "個人情報の流出"
-description: "Combo Listについて"
-tags: ["combo"]
-img: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.mkQK50L0wwjrg__oYm9L3wAAAA%26pid%3DApi&f=1&ipt=4470c8e8d9c5c792fed7e0a3181ea24cb3d6f29bbc2924e9d0dd7d163c5625f0&ipo=images"
+title: '個人情報の流出'
+description: 'Combo Listについて'
+tags: ['combo']
+img: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.mkQK50L0wwjrg__oYm9L3wAAAA%26pid%3DApi&f=1&ipt=4470c8e8d9c5c792fed7e0a3181ea24cb3d6f29bbc2924e9d0dd7d163c5625f0&ipo=images'
 ---
 
 ## Combo Listとは

@@ -1,18 +1,18 @@
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button'
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useCreateArticle } from "@/functions/hooks/articles/create-articles-hooks";
-import { Turnstile } from "next-turnstile";
+} from '@/components/ui/dialog'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { useCreateArticle } from '@/functions/hooks/articles/create-articles-hooks'
+import { Turnstile } from 'next-turnstile'
 
 export function CreateArticleDialog() {
-  const { formik, setToken } = useCreateArticle();
+  const { formik, setToken } = useCreateArticle()
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -65,7 +65,7 @@ export function CreateArticleDialog() {
                 siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY as string}
                 theme="auto"
                 onVerify={token => {
-                  setToken(token);
+                  setToken(token)
                 }}
               />
             </div>
@@ -74,5 +74,5 @@ export function CreateArticleDialog() {
         </form>
       </DialogContent>
     </Dialog>
-  );
+  )
 }

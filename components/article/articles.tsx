@@ -1,13 +1,13 @@
-import Link from "next/link";
-import Image from "next/image";
-import { ArticleSummary } from "@/entities/articles";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { formatDate } from "@/functions/shared/formatdate";
-import { memo } from "react";
+import Link from 'next/link'
+import Image from 'next/image'
+import { ArticleSummary } from '@/entities/articles'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { formatDate } from '@/functions/shared/formatdate'
+import { memo } from 'react'
 
 type Props = {
-  articles: ArticleSummary[];
-};
+  articles: ArticleSummary[]
+}
 
 export const ArticlesList = memo(function ArticlesList({ articles }: Props) {
   return (
@@ -16,12 +16,12 @@ export const ArticlesList = memo(function ArticlesList({ articles }: Props) {
         <ArticleCard key={article.uuid} article={article} />
       ))}
     </div>
-  );
-});
+  )
+})
 
 type ArticleCardProps = {
-  article: ArticleSummary;
-};
+  article: ArticleSummary
+}
 
 function ArticleCard({ article }: ArticleCardProps) {
   return (
@@ -33,7 +33,7 @@ function ArticleCard({ article }: ArticleCardProps) {
               alt={article.title}
               src={
                 article.thumbnailUrl ||
-                "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=500&fit=crop&crop=center"
+                'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=500&fit=crop&crop=center'
               }
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -76,5 +76,5 @@ function ArticleCard({ article }: ArticleCardProps) {
         </div>
       </Link>
     </article>
-  );
+  )
 }

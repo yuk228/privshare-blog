@@ -1,5 +1,5 @@
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link'
+import React from 'react'
 
 export default function Footer() {
   return (
@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="flex flex-col md:flex-row items-center justify-center text-muted-foreground gap-2">
         <p>Copyright © 2025 PrivShare</p>
         <p>
-          The source code is available on{" "}
+          The source code is available on{' '}
           <span>
             <Link
               href="https://github.com/yuk228/privshare-blog"
@@ -19,5 +19,5 @@ export default function Footer() {
         </p>
       </div>
     </footer>
-  );
+  )
 }

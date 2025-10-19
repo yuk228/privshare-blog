@@ -1,28 +1,28 @@
-import Image from "next/image";
-import { getArticleData } from "@/functions/articles/article";
-import { notFound } from "next/navigation";
-import { MarkdownRenderer } from "@/components/article/markdown-renderer";
-import { prisma } from "@/prisma/prisma";
-import { Button } from "@/components/ui/button";
-import { Pencil, Trash2 } from "lucide-react";
+import Image from 'next/image'
+import { getArticleData } from '@/functions/articles/article'
+import { notFound } from 'next/navigation'
+import { MarkdownRenderer } from '@/components/article/markdown-renderer'
+import { prisma } from '@/prisma/prisma'
+import { Button } from '@/components/ui/button'
+import { Pencil, Trash2 } from 'lucide-react'
 
-export const revalidate = 7200;
-export const dynamic = "force-static";
+export const revalidate = 7200
+export const dynamic = 'force-static'
 
 export default async function Page({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string }>
 }) {
-  const { slug } = await params;
+  const { slug } = await params
   try {
-    const article = await getArticleData({ slug });
+    const article = await getArticleData({ slug })
     return (
       <article className="max-w-4xl mx-auto">
         <div className="mb-8 overflow-hidden rounded-2xl">
           <Image
             alt={article.title}
-            src={article.thumbnailUrl || ""}
+            src={article.thumbnailUrl || ''}
             width={1200}
             height={400}
             className="w-full h-64 md:h-80 object-cover"
@@ -47,9 +47,9 @@ export default async function Page({
           <MarkdownRenderer content={article.body} />
         </div>
       </article>
-    );
+    )
   } catch {
-    notFound();
+    notFound()
   }
 }
 
@@ -61,8 +61,8 @@ export async function generateStaticParams() {
     select: {
       slug: true,
     },
-  });
+  })
   return articles.map(article => ({
     slug: article.slug,
-  }));
+  }))
 }

@@ -1,13 +1,13 @@
-import React from "react";
-import Link from "next/link";
-import { ThemeToggle } from "@/components/layouts/theme-toggle";
-import SignIn from "@/components/layouts/signin";
-import { Button } from "@/components/ui/button";
-import Sidebar from "@/components/layouts/sidebar";
-import { auth } from "@/auth";
+import React from 'react'
+import Link from 'next/link'
+import { ThemeToggle } from '@/components/layouts/theme-toggle'
+import SignIn from '@/components/layouts/signin'
+import { Button } from '@/components/ui/button'
+import Sidebar from '@/components/layouts/sidebar'
+import { auth } from '@/auth'
 
 export default async function Header() {
-  const session = await auth();
+  const session = await auth()
   return (
     <header className="fixed top-0 w-full z-50 backdrop-blur-sm border-b border-foreground/10">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
@@ -33,5 +33,5 @@ export default async function Header() {
         </div>
       </div>
     </header>
-  );
+  )
 }

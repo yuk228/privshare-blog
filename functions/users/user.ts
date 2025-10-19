@@ -1,36 +1,37 @@
-import { User } from "next-auth";
-import { prisma } from "@/prisma/prisma";
+import { User } from 'next-auth'
+import { prisma } from '@/prisma/prisma'
 
 type currentUserProps = {
-  sessionUser: User;
-};
+  sessionUser: User
+}
 
 export async function currentUser({ sessionUser }: currentUserProps) {
   try {
     const user = await prisma.user.findUnique({
       where: {
-        email: sessionUser.email || "",
+        email: sessionUser.email || '',
       },
-    });
-    return user;
+    })
+    return user
   } catch (error) {
-    console.error(error);
-    return null;
+    console.error(error)
+    return null
   }
 }
 
 type getUserByUuidProps = {
-  uuid: string;
-};
+  uuid: string
+}
 
 export async function getUserByUuid({ uuid }: getUserByUuidProps) {
   try {
     const user = await prisma.user.findUnique({
       where: { uuid },
-    });
-    return user;
+      select: {},
+    })
+    return user
   } catch (error) {
-    console.error(error);
-    return null;
+    console.error(error)
+    return null
   }
 }

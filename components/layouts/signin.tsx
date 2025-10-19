@@ -1,6 +1,6 @@
-import { auth, signIn, signOut } from "@/auth";
-import { Button } from "@/components/ui/button";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { auth, signIn, signOut } from '@/auth'
+import { Button } from '@/components/ui/button'
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,19 +8,19 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import Link from "next/link";
+} from '@/components/ui/dropdown-menu'
+import Link from 'next/link'
 
 export default async function SignIn() {
-  const session = await auth();
+  const session = await auth()
   if (session) {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Avatar>
             <AvatarImage
-              src={session.user?.image || ""}
-              alt={session.user?.name || ""}
+              src={session.user?.image || ''}
+              alt={session.user?.name || ''}
             />
             <AvatarFallback>{session.user?.name?.charAt(0)}</AvatarFallback>
           </Avatar>
@@ -41,8 +41,8 @@ export default async function SignIn() {
           <DropdownMenuItem>
             <form
               action={async () => {
-                "use server";
-                await signOut();
+                'use server'
+                await signOut()
               }}
             >
               <button>SignOut</button>
@@ -50,16 +50,16 @@ export default async function SignIn() {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-    );
+    )
   }
   return (
     <form
       action={async () => {
-        "use server";
-        await signIn("github");
+        'use server'
+        await signIn('github')
       }}
     >
       <Button type="submit">SignIn</Button>
     </form>
-  );
+  )
 }

@@ -1,9 +1,9 @@
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 type Props = {
-  content: string;
-};
+  content: string
+}
 
 export function MarkdownRenderer({ content }: Props) {
   return (
@@ -97,5 +97,5 @@ export function MarkdownRenderer({ content }: Props) {
     >
       {content}
     </ReactMarkdown>
-  );
+  )
 }

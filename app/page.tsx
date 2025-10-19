@@ -1,10 +1,10 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { CircleAlert } from "lucide-react";
-import { LatestArticles } from "@/components/article/latestArticles";
+import { motion } from 'framer-motion'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
+import { CircleAlert } from 'lucide-react'
+import { LatestArticles } from '@/components/article/latestArticles'
 
 export default function Page() {
   return (
@@ -68,5 +68,5 @@ export default function Page() {
         </motion.div>
       </section>
     </>
-  );
+  )
 }

@@ -1,8 +1,8 @@
 ---
-title: "iPhoneのデータ保護"
-description: "iPhoneをハードウェアレベルで安全に保護する方法をレクチャーします"
-tags: ["mobile", "ios"]
-img: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.pRy13fEEdg0SpkDlPUxBogF1Cn%26pid%3DApi&f=1&ipt=33a344e4a1216d35a0fadd35c24f106b72adbd6ea2be51752581a6b23b75dbb3&ipo=images"
+title: 'iPhoneのデータ保護'
+description: 'iPhoneをハードウェアレベルで安全に保護する方法をレクチャーします'
+tags: ['mobile', 'ios']
+img: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.pRy13fEEdg0SpkDlPUxBogF1Cn%26pid%3DApi&f=1&ipt=33a344e4a1216d35a0fadd35c24f106b72adbd6ea2be51752581a6b23b75dbb3&ipo=images'
 ---
 
 ## 前提知識

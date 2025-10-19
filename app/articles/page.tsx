@@ -1,14 +1,14 @@
-import { ArticlesList } from "@/components/article/articles";
-import { getArticlesSummaries } from "@/functions/articles/article";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { CATEGORIES_LINKS } from "@/components/layouts/sidebar";
-import Link from "next/link";
+import { ArticlesList } from '@/components/article/articles'
+import { getArticlesSummaries } from '@/functions/articles/article'
+import { ScrollArea } from '@/components/ui/scroll-area'
+import { CATEGORIES_LINKS } from '@/components/layouts/sidebar'
+import Link from 'next/link'
 
-export const revalidate = 3600;
-export const dynamic = "force-static";
+export const revalidate = 3600
+export const dynamic = 'force-static'
 
 export default async function Page() {
-  const articles = await getArticlesSummaries({});
+  const articles = await getArticlesSummaries({})
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
@@ -36,7 +36,7 @@ export default async function Page() {
         </main>
       </div>
     </div>
-  );
+  )
 }
 
 async function TableOfContents() {
@@ -49,9 +49,9 @@ async function TableOfContents() {
             key={category.label}
             href={category.href}
             className={`w-full flex items-center justify-between px-3 py-2 text-left rounded-md text-sm transition-colors ${
-              "/articles" === category.href
-                ? "bg-muted text-foreground"
-                : "text-muted-foreground hover:bg-muted hover:text-foreground"
+              '/articles' === category.href
+                ? 'bg-muted text-foreground'
+                : 'text-muted-foreground hover:bg-muted hover:text-foreground'
             }`}
           >
             {category.icon}
@@ -60,5 +60,5 @@ async function TableOfContents() {
         ))}
       </nav>
     </div>
-  );
+  )
 }
