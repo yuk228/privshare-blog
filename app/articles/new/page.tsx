@@ -9,7 +9,6 @@ import { useLocalStorage } from '@/functions/hooks/local-storage-hooks'
 import { CreateArticleDialog } from '@/components/article/new/create-article-dialog'
 
 export default function Page() {
-  // const currentUser = useCurrentUser
   const [title, setTitle] = useLocalStorage('title')
   const [body, setBody] = useLocalStorage('body')
 
