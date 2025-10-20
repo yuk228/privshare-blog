@@ -2,16 +2,14 @@ import { useFormik } from 'formik'
 import { useState } from 'react'
 import * as yup from 'yup'
 import useSWRMutation from 'swr/mutation'
-import { useLocalStorage } from '@/functions/hooks/local-storage-hooks'
-import { ArticleRequest, ArticleResponse } from '@/entities/articles'
+import { useLocalStorage } from '@/services/hooks/local-storage-hooks'
+import { ArticleDto, CreateArticleDto } from '@/entities/articles'
 import { useRouter } from 'next/navigation'
 
-type FormValues = ArticleRequest & {
-  token: string
-}
+type FormValues = CreateArticleDto
 
 type UseCreateArticle = {
-  data: ArticleResponse | undefined
+  data: ArticleDto | undefined
   formik: ReturnType<typeof useFormik<FormValues>>
   isMutating: boolean
   setToken: (token: string) => void
@@ -26,7 +24,7 @@ export function useCreateArticle(): UseCreateArticle {
   async function createArticle(
     url: string,
     { arg }: { arg: FormValues }
-  ): Promise<ArticleResponse> {
+  ): Promise<ArticleDto> {
     const response = await fetch(url, {
       method: 'POST',
       headers: {

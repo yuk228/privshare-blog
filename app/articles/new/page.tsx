@@ -5,7 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Textarea } from '@/components/ui/textarea'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { MarkdownRenderer } from '@/components/article/markdown-renderer'
-import { useLocalStorage } from '@/functions/hooks/local-storage-hooks'
+import { useLocalStorage } from '@/services/hooks/local-storage-hooks'
 import { CreateArticleDialog } from '@/components/article/new/create-article-dialog'
 
 export default function Page() {

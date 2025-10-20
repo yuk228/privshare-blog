@@ -1,4 +1,4 @@
-import { getArticleData } from '@/functions/articles/article'
+import { getArticleData } from '@/services/articles/article'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(

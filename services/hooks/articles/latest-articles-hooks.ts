@@ -1,8 +1,8 @@
-import { ArticleSummary } from '@/entities/articles'
+import { ArticleSummaryDto } from '@/entities/articles'
 import useSWR, { mutate } from 'swr'
 
 type UseLatestArticles = {
-  data: ArticleSummary[]
+  data: ArticleSummaryDto[]
   isLoading: boolean
   reloadArticles: () => void
 }

@@ -4,7 +4,7 @@ import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { currentUser } from '@/functions/users/user'
+import { currentUser } from '@/services/users/user'
 import { redirect } from 'next/navigation'
 
 export default async function Page() {

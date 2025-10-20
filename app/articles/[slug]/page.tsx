@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { getArticleData } from '@/functions/articles/article'
+import { getArticleData } from '@/services/articles/article'
 import { notFound } from 'next/navigation'
 import { MarkdownRenderer } from '@/components/article/markdown-renderer'
 import { prisma } from '@/prisma/prisma'

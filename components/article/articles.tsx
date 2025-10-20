@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArticleSummary } from '@/entities/articles'
+import { ArticleSummaryDto } from '@/entities/articles'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { formatDate } from '@/functions/shared/formatdate'
+import { formatDate } from '@/services/shared/formatdate'
 import { memo } from 'react'
 
 type Props = {
-  articles: ArticleSummary[]
+  articles: ArticleSummaryDto[]
 }
 
 export const ArticlesList = memo(function ArticlesList({ articles }: Props) {
@@ -20,7 +20,7 @@ export const ArticlesList = memo(function ArticlesList({ articles }: Props) {
 })
 
 type ArticleCardProps = {
-  article: ArticleSummary
+  article: ArticleSummaryDto
 }
 
 function ArticleCard({ article }: ArticleCardProps) {

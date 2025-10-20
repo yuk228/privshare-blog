@@ -5,10 +5,10 @@ import {
   InternalServerError,
   Unauthorized,
   UnprocessableEntity,
-} from '@/functions/api/responses'
-import { canCreateArticle, createArticle } from '@/functions/articles/article'
-import { validateToken } from '@/functions/turnstile'
-import { currentUser } from '@/functions/users/user'
+} from '@/services/api/responses'
+import { canCreateArticle, createArticle } from '@/services/articles/article'
+import { validateToken } from '@/services/turnstile'
+import { currentUser } from '@/services/users/user'
 import { NextRequest } from 'next/server'
 
 export async function POST(request: NextRequest) {

@@ -1,4 +1,4 @@
-import { ArticleResponse } from '@/entities/articles'
+import { ArticleDto } from '@/entities/articles'
 import useSWR, { mutate } from 'swr'
 
 type UseArticleHoosRequest = {
@@ -6,7 +6,7 @@ type UseArticleHoosRequest = {
 }
 
 type UseArticleHookResponse = {
-  article: ArticleResponse
+  article: ArticleDto
   isLoading: boolean
   reloadArticle: () => void
 }

@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { ScrollArea, ScrollBar } from '../ui/scroll-area'
-import { useLatestArticles } from '@/functions/hooks/articles/latest-articles-hooks'
-import { ArticleSummary } from '@/entities/articles'
-import { formatDate } from '@/functions/shared/formatdate'
+import { useLatestArticles } from '@/services/hooks/articles/latest-articles-hooks'
+import { ArticleSummaryDto } from '@/entities/articles'
+import { formatDate } from '@/services/shared/formatdate'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Skeleton } from '@/components/ui/skeleton'
 
@@ -27,7 +27,7 @@ export function LatestArticles() {
 }
 
 type LatestArticleCardProps = {
-  article: ArticleSummary
+  article: ArticleSummaryDto
 }
 
 function LatestArticleCard({ article }: LatestArticleCardProps) {

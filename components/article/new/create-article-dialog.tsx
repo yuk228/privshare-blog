@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { useCreateArticle } from '@/functions/hooks/articles/create-articles-hooks'
+import { useCreateArticle } from '@/services/hooks/articles/create-articles-hooks'
 import { Turnstile } from 'next-turnstile'
 
 export function CreateArticleDialog() {

@@ -1,5 +1,5 @@
 import { ArticlesList } from '@/components/article/articles'
-import { getArticlesSummaries } from '@/functions/articles/article'
+import { getArticlesSummaries } from '@/services/articles/article'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { CATEGORIES_LINKS } from '@/components/layouts/sidebar'
 import Link from 'next/link'

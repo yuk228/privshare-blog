@@ -1,5 +1,5 @@
-import { Ok } from '@/functions/api/responses'
-import { getArticlesSummaries } from '@/functions/articles/article'
+import { Ok } from '@/services/api/responses'
+import { getArticlesSummaries } from '@/services/articles/article'
 
 export async function GET() {
   const articles = await getArticlesSummaries({ limit: 7 })

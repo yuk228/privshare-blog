@@ -1,5 +1,5 @@
 'use client'
-import { useArticle } from '@/functions/hooks/articles/article-hook'
+import { useArticle } from '@/services/hooks/articles/article-hook'
 import { useParams } from 'next/navigation'
 
 export default function Page() {

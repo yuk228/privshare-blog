@@ -1,11 +1,12 @@
 import { prisma } from '@/prisma/prisma'
 import { Article, Category, User } from '@/app/generated/prisma'
-import {
-  ArticleResponse,
-  ArticleRequest,
-  ArticleSummary,
-} from '@/entities/articles'
 import { notFound } from 'next/navigation'
+import {
+  ArticleDto,
+  ArticleSummaryDto,
+  CreateArticleDto,
+  UpdateArticleDto,
+} from '@/entities/articles/articles'
 
 type GetArticlesSummariesProps = {
   category?: string
@@ -15,7 +16,7 @@ type GetArticlesSummariesProps = {
 export async function getArticlesSummaries({
   category,
   limit,
-}: GetArticlesSummariesProps): Promise<ArticleSummary[]> {
+}: GetArticlesSummariesProps): Promise<ArticleSummaryDto[]> {
   const whereClause = category
     ? {
         isPublished: true,
@@ -46,7 +47,7 @@ export async function getArticlesSummaries({
     },
     take: limit,
   })
-  return articles as ArticleSummary[]
+  return articles as ArticleSummaryDto[]
 }
 
 type GetArticleDataProps = {
@@ -55,7 +56,7 @@ type GetArticleDataProps = {
 
 export async function getArticleData({
   slug,
-}: GetArticleDataProps): Promise<ArticleResponse> {
+}: GetArticleDataProps): Promise<ArticleDto> {
   const article = await prisma.article.findUnique({
     where: { slug },
     include: {
@@ -83,7 +84,7 @@ export async function getArticleData({
   }
 }
 
-type CreateArticleProps = ArticleRequest & {
+type CreateArticleProps = Omit<CreateArticleDto, 'token'> & {
   authorId: number
 }
 
@@ -95,7 +96,7 @@ export async function createArticle({
   thumbnailUrl,
   authorId,
   isPublished,
-}: CreateArticleProps): Promise<ArticleResponse> {
+}: CreateArticleProps): Promise<ArticleDto> {
   const article = await prisma.article.create({
     data: {
       title,
@@ -129,9 +130,7 @@ export async function createArticle({
   }
 }
 
-type UpdateArticleProps = ArticleRequest & {
-  uuid: string
-}
+type UpdateArticleProps = Omit<UpdateArticleDto, 'token'>
 
 export async function updateArticle({
   uuid,
@@ -141,7 +140,7 @@ export async function updateArticle({
   slug,
   thumbnailUrl,
   isPublished,
-}: UpdateArticleProps): Promise<ArticleResponse> {
+}: UpdateArticleProps): Promise<ArticleDto> {
   const article = await prisma.article.update({
     where: { uuid },
     data: { title, description, body, slug, thumbnailUrl, isPublished },

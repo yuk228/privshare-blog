@@ -1,6 +1,6 @@
 import { auth } from '@/auth'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { currentUser } from '@/functions/users/user'
+import { currentUser } from '@/services/users/user'
 import { redirect } from 'next/navigation'
 
 export default async function Page() {
