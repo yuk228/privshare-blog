@@ -6,43 +6,43 @@ import Header from '@/components/layouts/header'
 import Footer from '@/components/layouts/footer'
 
 const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
+    variable: '--font-geist-sans',
+    subsets: ['latin'],
 })
 
 const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+    variable: '--font-geist-mono',
+    subsets: ['latin'],
 })
 
 export const metadata: Metadata = {
-  title: 'PrivShare',
-  description: 'Privacy Matters.',
+    title: 'PrivShare',
+    description: 'Privacy Matters.',
 }
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode
+    children: React.ReactNode
 }>) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Header />
-          <main className="min-h-screen pt-32 px-4 lg:px-8 max-w-7xl mx-auto">
-            {children}
-          </main>
-          <Footer />
-        </ThemeProvider>
-      </body>
-    </html>
-  )
+    return (
+        <html lang="en" suppressHydrationWarning>
+            <body
+                className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+            >
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="system"
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    <Header />
+                    <main className="min-h-screen pt-32 px-4 lg:px-8 max-w-7xl mx-auto">
+                        {children}
+                    </main>
+                    <Footer />
+                </ThemeProvider>
+            </body>
+        </html>
+    )
 }
