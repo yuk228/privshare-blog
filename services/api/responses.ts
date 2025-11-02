@@ -1,33 +1,57 @@
 import { NextResponse } from 'next/server'
 
-export function NotFound() {
-  return NextResponse.json({ error: 'Resource Not Found' }, { status: 404 })
+export interface Response<T> {
+  data: T
 }
 
-export function Unauthorized() {
-  return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+export function Ok<T>(data: T): NextResponse<Response<T>> {
+  return NextResponse.json({ data }, { status: 200 })
 }
 
-export function Forbidden() {
-  return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+export function Created<T>(data: T): NextResponse<Response<T>> {
+  return NextResponse.json({ data }, { status: 201 })
 }
 
-export function Created(data: any) {
-  return NextResponse.json(data, { status: 201 })
+export function Updated<T>(data: T): NextResponse<Response<T>> {
+  return NextResponse.json({ data }, { status: 200 })
 }
 
-export function Updated(data: any) {
-  return NextResponse.json(data, { status: 200 })
+export interface ErrorResponse {
+  status: number
+  message?: string
 }
 
-export function Ok(data?: any) {
-  return NextResponse.json(data, { status: 200 })
+export function NotFound(): NextResponse<ErrorResponse> {
+  return NextResponse.json(
+    { status: 404, message: 'Resource Not Found' },
+    { status: 404 }
+  )
 }
 
-export function UnprocessableEntity() {
-  return NextResponse.json({ error: 'Unprocessable Entity' }, { status: 422 })
+export function Unauthorized(): NextResponse<ErrorResponse> {
+  return NextResponse.json(
+    { status: 401, message: 'Unauthorized' },
+    { status: 401 }
+  )
 }
 
-export function InternalServerError() {
-  return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
+export function Forbidden(): NextResponse<ErrorResponse> {
+  return NextResponse.json(
+    { status: 403, message: 'Forbidden' },
+    { status: 403 }
+  )
+}
+
+export function UnprocessableEntity(): NextResponse<ErrorResponse> {
+  return NextResponse.json(
+    { status: 422, message: 'Unprocessable Entity' },
+    { status: 422 }
+  )
+}
+
+export function InternalServerError(): NextResponse<ErrorResponse> {
+  return NextResponse.json(
+    { status: 500, message: 'Internal Server Error' },
+    { status: 500 }
+  )
 }

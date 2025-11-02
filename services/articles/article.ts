@@ -7,6 +7,7 @@ import {
   CreateArticleDto,
   UpdateArticleDto,
 } from '@/entities/articles/articles'
+import { UserDto } from '@/entities/users/users'
 
 type GetArticlesSummariesProps = {
   category?: string
@@ -166,15 +167,15 @@ export async function updateArticle({
   }
 }
 
-export function canCreateArticle(user: User) {
+export function canCreateArticle(user: User | UserDto) {
   return user.role === 'OWNER' || user.role === 'ADMIN'
 }
 
-export function canUpdateArticle(user: User, article: Article) {
+export function canUpdateArticle(user: User | UserDto, article: ArticleDto) {
   if (user.role === 'OWNER') {
     return true
   }
-  if (user.role === 'ADMIN' && user.id === article.authorId) {
+  if (user.role === 'ADMIN' && user.uuid === article.author.uuid) {
     return true
   }
   return false

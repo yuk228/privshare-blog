@@ -8,7 +8,7 @@ import { LatestArticles } from '@/components/article/latestArticles'
 
 export default function Page() {
   return (
-    <>
+    <main>
       <section className="flex flex-col items-center justify-center min-h-[80vh] space-y-8 px-4">
         <div className="text-center space-y-6">
           <motion.div
@@ -67,6 +67,6 @@ export default function Page() {
           <LatestArticles />
         </motion.div>
       </section>
-    </>
+    </main>
   )
 }

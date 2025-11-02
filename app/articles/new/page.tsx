@@ -30,7 +30,7 @@ export default function Page() {
             <CreateArticleDialog />
           </div>
           <TabsContent value="write">
-            <Write body={body} setBody={setBody} />
+            <Writer body={body} setBody={setBody} />
           </TabsContent>
           <TabsContent value="preview">
             <Preview body={body} title={title} />
@@ -41,12 +41,12 @@ export default function Page() {
   )
 }
 
-type WriteProps = {
+type WriterProps = {
   body: string
   setBody: (body: string) => void
 }
 
-function Write({ body, setBody }: WriteProps) {
+function Writer({ body, setBody }: WriterProps) {
   return (
     <div>
       <div className="flex flex-col gap-4">
@@ -71,7 +71,7 @@ function Preview({ body, title }: PreviewProps) {
     <div className="w-full">
       <ScrollArea className="h-[500px]">
         <h1 className="text-4xl font-bold mb-4">{title}</h1>
-        <MarkdownRenderer content={body || ''} />
+        <MarkdownRenderer>{body || ''}</MarkdownRenderer>
       </ScrollArea>
     </div>
   )

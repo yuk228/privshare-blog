@@ -5,9 +5,9 @@ import { MarkdownRenderer } from '@/components/article/markdown-renderer'
 import { prisma } from '@/prisma/prisma'
 import { Button } from '@/components/ui/button'
 import { Pencil, Trash2 } from 'lucide-react'
+import { Protected } from '@/components/shared/protected'
 
 export const revalidate = 7200
-export const dynamic = 'force-static'
 
 export default async function Page({
   params,
@@ -33,18 +33,20 @@ export default async function Page({
           <h1 className="flex-1 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
             {article.title}
           </h1>
-          <div className="flex items-center gap-2 ml-2 text-muted-foreground">
-            <Button variant="ghost" size="sm" aria-label="Delete article">
-              <Trash2 className="h-5 w-5" />
-            </Button>
-            <Button variant="ghost" size="sm" aria-label="Edit article">
-              <Pencil className="h-5 w-5" />
-            </Button>
-          </div>
+          <Protected>
+            <div className="flex items-center gap-2 ml-2 text-muted-foreground">
+              <Button variant="ghost" size="sm" aria-label="Delete article">
+                <Trash2 className="h-5 w-5" />
+              </Button>
+              <Button variant="ghost" size="sm" aria-label="Edit article">
+                <Pencil className="h-5 w-5" />
+              </Button>
+            </div>
+          </Protected>
         </div>
 
         <div>
-          <MarkdownRenderer content={article.body} />
+          <MarkdownRenderer>{article.body}</MarkdownRenderer>
         </div>
       </article>
     )

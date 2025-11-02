@@ -2,10 +2,10 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
 type Props = {
-  content: string
+  children: string
 }
 
-export function MarkdownRenderer({ content }: Props) {
+export function MarkdownRenderer({ children }: Props) {
   return (
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
@@ -95,7 +95,7 @@ export function MarkdownRenderer({ content }: Props) {
         ),
       }}
     >
-      {content}
+      {children}
     </ReactMarkdown>
   )
 }

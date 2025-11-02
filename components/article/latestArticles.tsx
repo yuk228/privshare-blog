@@ -10,7 +10,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 export function LatestArticles() {
   const { data: articles, isLoading } = useLatestArticles()
 
-  if (typeof articles === 'undefined' || isLoading) {
+  if (isLoading) {
     return <Skeleton className="w-full h-48" />
   }
 
