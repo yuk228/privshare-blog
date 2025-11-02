@@ -4,16 +4,21 @@ import { notFound } from 'next/navigation'
 import { MarkdownRenderer } from '@/components/article/markdown-renderer'
 import { prisma } from '@/prisma/prisma'
 import { Button } from '@/components/ui/button'
-import { Pencil, Trash2 } from 'lucide-react'
+import { Pencil } from 'lucide-react'
 import { Protected } from '@/components/shared/protected'
+import Link from 'next/link'
 
 export const revalidate = 7200
 
-export default async function Page({
-    params,
-}: {
-    params: Promise<{ slug: string }>
-}) {
+interface Params {
+    slug: string
+}
+
+interface Props {
+    params: Promise<Params>
+}
+
+export default async function Page({ params }: Props) {
     const { slug } = await params
     try {
         const article = await getArticleData({ slug })
@@ -35,20 +40,15 @@ export default async function Page({
                     </h1>
                     <Protected>
                         <div className="flex items-center gap-2 ml-2 text-muted-foreground">
-                            <Button
-                                variant="ghost"
-                                size="sm"
-                                aria-label="Delete article"
-                            >
-                                <Trash2 className="h-5 w-5" />
-                            </Button>
-                            <Button
-                                variant="ghost"
-                                size="sm"
-                                aria-label="Edit article"
-                            >
-                                <Pencil className="h-5 w-5" />
-                            </Button>
+                            <Link href={`/articles/${article.slug}/edit`}>
+                                <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    aria-label="Edit article"
+                                >
+                                    <Pencil className="h-5 w-5" />
+                                </Button>
+                            </Link>
                         </div>
                     </Protected>
                 </div>
